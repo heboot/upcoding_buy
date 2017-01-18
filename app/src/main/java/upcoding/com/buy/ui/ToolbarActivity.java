@@ -14,6 +14,8 @@ import upcoding.com.buy.R;
 
 public class ToolbarActivity extends AppCompatActivity {
 
+    protected String TAG = this.getClass().getName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
