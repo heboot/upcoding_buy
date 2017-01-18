@@ -16,7 +16,7 @@ public class MainActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+//test
         CommonService.getInstance().homeGuest();
 
 //                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread())
