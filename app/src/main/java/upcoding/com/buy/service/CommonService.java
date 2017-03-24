@@ -9,9 +9,12 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.FormBody;
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import upcoding.com.buy.BuildConfig;
 import upcoding.com.buy.api.ApiClient;
 import upcoding.com.buy.api.ApiRequest;
+import upcoding.com.buy.api.RxHelper;
 import upcoding.com.buy.bean.CommonGuestBean;
 
 /**
@@ -53,7 +56,7 @@ public class CommonService extends HttpService {
 
     public Observable<CommonGuestBean> homeGuest() {
         ApiRequest apiRequest = new ApiRequest(BuildConfig.HTTP_SERVER + ACTION_COMMON_HOME_GUEST, ApiRequest.Method.GET, true);
-        return ApiClient.getCommonServiceInterface(apiRequest).homeGuest();
+        return RxHelper.handleResult2(ApiClient.getCommonServiceInterface(apiRequest).homeGuest());
     }
 
 //    public void homeGuest(final Context context) {

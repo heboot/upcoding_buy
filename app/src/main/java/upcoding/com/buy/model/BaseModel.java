@@ -1,13 +1,16 @@
 package upcoding.com.buy.model;
 
+import android.text.TextUtils;
+
 /**
  * Created by Heboot on 16/6/27.
  */
-public class BaseModel {
+public class BaseModel<T> {
     private Integer error;
     private String error_text;
     private String error_msg;
     private String result;
+    private T datas;
 
     public Integer getError() {
         return error;
@@ -47,7 +50,20 @@ public class BaseModel {
         this.result = result;
     }
 
+    public T getDatas() {
+        return datas;
+    }
+
+    public void setDatas(T datas) {
+        this.datas = datas;
+    }
+
     public BaseModel() {
 
     }
+
+    public boolean success() {
+        return getError() == null && TextUtils.isEmpty(getError_text());
+    }
+
 }

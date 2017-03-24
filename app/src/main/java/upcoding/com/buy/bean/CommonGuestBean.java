@@ -6,7 +6,7 @@ import upcoding.com.buy.model.BaseModel;
 /**
  * Created by Heboot on 16/8/1.
  */
-public class CommonGuestBean extends BaseModel {
+public class CommonGuestBean<T> extends BaseModel<T> {
 
     private String appVersion;
     private String appDownloadUrl;

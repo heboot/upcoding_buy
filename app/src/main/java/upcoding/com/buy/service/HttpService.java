@@ -4,6 +4,7 @@ package upcoding.com.buy.service;
  * Created by Heboot on 16/6/26.
  */
 public abstract class HttpService {
+
     String ACTION_VERSION = "/v1";
 
 
