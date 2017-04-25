@@ -18,27 +18,25 @@
         android:id="@+id/llyt_main_bottom"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        android:layout_marginTop="200dp"
+        android:background="@color/white">
 
-
-        <ImageView
+        <ImageButton
             android:id="@+id/tv_main_recommend"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
             android:button="@null"
             android:gravity="center"
             android:padding="16dp"
             android:src="@drawable/ic_account_balance_gray_24dp" />
 
-//测试文件
-        <ImageView
+        <ImageButton
+            android:background="?android:selectableItemBackground"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:button="@null"
             android:gravity="center"
             android:padding="16dp"
             android:src="@drawable/ic_account_balance_gray_24dp" />
