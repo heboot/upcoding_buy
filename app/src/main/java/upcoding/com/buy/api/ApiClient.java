@@ -76,7 +76,7 @@ public class ApiClient {
     //系统模块相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
     //获取app基本信息
     static final String ACTION_COMMON_HOME = ACTION_VERSION + "/common/home";
-    static final String ACTION_COMMON_HOME_GUEST =  "/boom/v1/common/home-guest";
+    static final String ACTION_COMMON_HOME_GUEST = "/boom/v1/common/home-guest";
     String ACTION_COMMON_MESSAGE = ACTION_VERSION + "/common/message";
     //系统模块相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
 
@@ -123,18 +123,14 @@ public class ApiClient {
 
     public static CommonServiceInterface getCommonServiceInterface(ApiRequest request) {
         doSignature(request);
-//        LogUtils.e("tag", "ON CALL6" + BuildConfig.HTTP_SERVER);
         if (commonServiceInterface == null) {
             Retrofit retrofit = new Retrofit.Builder().
                     baseUrl("http://api.codingfeel.com/")
-//                    .client(client)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-            LogUtils.e("tag","ON CALL6" + client);
             return retrofit.create(CommonServiceInterface.class);
         }
-//        LogUtils.e("tag","ON CALL6" + request.getHttpUrl());
         return commonServiceInterface;
     }
 
@@ -151,14 +147,6 @@ public class ApiClient {
     private static void doSignature(ApiRequest httpRequest) {
         String time = String.valueOf(new Date().getTime());
         String canonicalizedHeaders = "";
-//        headers = new Headers.Builder()
-//                .add("x-codingfeel-terminal", "android")
-//                .add("x-codingfeel-version", MyApplication.getInstance().getVersion())
-//                .add("Charset", "utf-8")
-//                .add("x-codingfeel-time", time)
-
-//                .build();
-//        httpRequest.addHeader("x-codingfeel-terminal", "android");
         UserModel user = UserService.getInstance().getSharePrefUser(MyApplication.getInstance());
 
         if (httpRequest.isGuide()) {
@@ -207,25 +195,6 @@ public class ApiClient {
         } catch (InvalidKeyException e) {
             e.printStackTrace();
         }
-
-
-//        headers = new Headers.Builder()
-//                .add("x-codingfeel-terminal", "android")
-//                .add("x-codingfeel-version", MyApplication.getInstance().getVersion())
-//                .add("Charset", "utf-8")
-//                .add("x-codingfeel-uid", String.valueOf(uid))
-//                .add("x-codingfeel-time", time)
-//                .add("Authorization", "Basic " + token + ":" + signature)
-//                .build();
-
-
-//        httpRequest.addHeader("x-codingfeel-terminal", "android");
-//        httpRequest.addHeader("x-codingfeel-version", MyApplication.getInstance().getVersion());
-//        httpRequest.addHeader("Charset", "utf-8");
-//        httpRequest.addHeader("x-codingfeel-uid", String.valueOf(uid));
-//        httpRequest.addHeader("x-codingfeel-time", time);
-//        httpRequest.addHeader("Authorization", "Basic " + token + ":" + signature);
-
     }
 
     private static String getSignNetworkUri(ApiRequest httpRequest) {
