@@ -40,7 +40,7 @@ public class MainActivity extends ToolbarActivity {
         boolean hasNavigationBar = false;
         Resources rs = context.getResources();
         int id = rs.getIdentifier("config_showNavigationBar", "bool", "android");
-        if (id > 0) {//ceshi sshkey
+        if (id > 0) {//ceshi email ssh
             hasNavigationBar = rs.getBoolean(id);
         }
         try {
