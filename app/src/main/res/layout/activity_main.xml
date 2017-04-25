@@ -33,7 +33,7 @@
             android:padding="16dp"
             android:src="@drawable/ic_account_balance_gray_24dp" />
 
-
+//测试文件
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
