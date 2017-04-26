@@ -5,35 +5,20 @@
     <item
         android:id="@+id/bottom_nav_ui"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="111"
+        android:icon="@drawable/ic_account_balance_gray_24dp"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/bottom_nav_data"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="111"
+        android:icon="@drawable/ic_account_balance_gray_24dp"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/bottom_nav_service"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="111"
+        android:icon="@drawable/ic_account_balance_gray_24dp"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/bottom_nav_net"
-        android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="111"
-        app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/bottom_nav_media"
-        android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="111"
-        app:showAsAction="ifRoom" />
 </menu>

@@ -56,7 +56,7 @@ public class CommonService extends HttpService {
 
     public Observable<CommonGuestBean> homeGuest() {
         ApiRequest apiRequest = new ApiRequest(BuildConfig.HTTP_SERVER + ACTION_COMMON_HOME_GUEST, ApiRequest.Method.GET, true);
-        return RxHelper.handleResult2(ApiClient.getCommonServiceInterface(apiRequest).homeGuest());
+        return RxHelper.handleResult2(ApiClient.getServiceApi(apiRequest).homeGuest());
     }
 
 //    public void homeGuest(final Context context) {

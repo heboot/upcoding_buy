@@ -1,17 +1,33 @@
 package upcoding.com.buy.api;
 
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import okhttp3.Headers;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,6 +40,7 @@ import upcoding.com.buy.model.UserModel;
 import upcoding.com.buy.service.UserService;
 import upcoding.com.buy.utils.EncryptUtils;
 import upcoding.com.buy.utils.LogUtils;
+import upcoding.com.buy.utils.NetWorkUtils;
 
 /**
  * Created by Heboot on 2016/12/27.
@@ -31,82 +48,6 @@ import upcoding.com.buy.utils.LogUtils;
 
 public class ApiClient {
 
-    static final String ACTION_VERSION = "/v1";
-
-
-    //用户相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
-    //登录
-    String ACTION_USER_LOGIN_WX = ACTION_VERSION + "/user/weixin-login";
-    //反馈
-    String ACTION_USER_FEEDBACK = ACTION_VERSION + "/user/feedback";
-    //我的优惠列表
-    String ACTION_USER_MYINFO = ACTION_VERSION + "/user/my-info";
-    String ACTION_USER_MYFAV = ACTION_VERSION + "/user/my-fav";
-    String ACTION_USER_INFO = ACTION_VERSION + "/user/user-info";
-    String ACTION_USER_LOGIN = ACTION_VERSION + "/user/login";
-    String ACTION_USER_REGISTER = ACTION_VERSION + "/user/register";
-    //用户相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
-
-
-    //优惠信息相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
-    //获取文章首页列表数据
-    String ACTION_INFO_HOME = ACTION_VERSION + "/info/home";
-    String ACTION_INFO_EVA = ACTION_VERSION + "/info/eva";
-    String ACTION_INFO_COMMENT = ACTION_VERSION + "/info/comment";
-    String ACTION_INFO_INFO = ACTION_VERSION + "/info/info";
-    String ACTION_INFO_READ = ACTION_VERSION + "/info/read";
-    String ACTION_INFO_SHARE = ACTION_VERSION + "/info/share";
-    String ACTION_INFO_DETAIL = ACTION_VERSION + "/info/detail";
-    //优惠信息相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
-
-    //帖子相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
-    //获取帖子首页列表数据
-    String ACTION_POST_HOME = ACTION_VERSION + "/post/home";
-    String ACTION_POST_COMMENT = ACTION_VERSION + "/post/comment";
-    String ACTION_POST_POST = ACTION_VERSION + "/post/post";
-    String ACTION_POST_READ = ACTION_VERSION + "/post/read";
-    String ACTION_USER_MYPOST = ACTION_VERSION + "/user/my-post";
-    String ACTION_POST_FAV = ACTION_VERSION + "/post/fav";
-    String ACTION_POST_EVA = ACTION_VERSION + "/post/eva";
-    String ACTION_POST_SHARE = ACTION_VERSION + "/post/share";
-    String ACTION_POST_DETAIL = ACTION_VERSION + "/post/detail";
-    //帖子相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
-
-
-    //系统模块相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
-    //获取app基本信息
-    static final String ACTION_COMMON_HOME = ACTION_VERSION + "/common/home";
-    static final String ACTION_COMMON_HOME_GUEST = "/boom/v1/common/home-guest";
-    String ACTION_COMMON_MESSAGE = ACTION_VERSION + "/common/message";
-    //系统模块相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
-
-    String PARAM_NAME = "name";
-    String PARAM_WX_UNIONID = "wxUnionid";
-    String PARAM_PASSWORD = "password";
-    String PARAM_DEVICE_ID = "deviceId";
-    String PARAM_KEYWORDS = "keywords";
-    String PARAM_PAGESIZE = "pageSize";
-    String PARAM_PAGENO = "pageNo";
-    String PARAM_POSTID = "postId";
-    String PARAM_INFOID = "infoId";
-    String PARAM_CONTENT = "content";
-    String PARAM_REUID = "reUid";
-    String PARAM_TITLE = "title";
-    String PARAM_GOODS_URL = "goodsUrl";
-    String PARAM_IMG_URL = "imgUrl";
-    String PARAM_TYPE = "type";
-    String PARAM_APP = "app";
-    String PARAM_CLIENT_ID = "clientId";
-    String PARAM_MESSAGE_ID = "messageId";
-    String PARAM_CREATE_TIME = "createTime";
-    String PARAM_AVATAR = "avatar";
-    String PARAM_WXCODE = "code";
-    String PARAM_LOGINNAME = "loginName";
-    String PARAM_MESSAGE_CREATE_TIME = "messageCreateTime";
-    String PARAM_MESSAGE_SYSTEM_CREATE_TIME = "systemMessageCreateTime";
-    String PARAM_IS_HOT = "isHot";
-
-    private static OkHttpClient client = new OkHttpClient();
 
     private static String token;
 
@@ -114,42 +55,136 @@ public class ApiClient {
 
     private static String TAG = ApiClient.class.getName();
 
-    public static CommonServiceInterface commonServiceInterface;
+    public static ServiceApi serviceApi;
+
+    /**
+     * 头部信息
+     */
+    private static Headers headers;
+
 
     /**
      * 用户ID
      */
     private static Integer uid = 0;
 
-    public static CommonServiceInterface getCommonServiceInterface(ApiRequest request) {
-        doSignature(request);
-        if (commonServiceInterface == null) {
-            Retrofit retrofit = new Retrofit.Builder().
-                    baseUrl("http://api.codingfeel.com/")
+    public static ServiceApi getServiceApi(ApiRequest request) {
+//        doSignature(request);
+        if (serviceApi == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(getOkClient(request))
+                    .baseUrl("http://api.codingfeel.com/")
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-            return retrofit.create(CommonServiceInterface.class);
+            return retrofit.create(ServiceApi.class);
         }
-        return commonServiceInterface;
+        return serviceApi;
     }
 
-    public interface CommonServiceInterface {
+    private static OkHttpClient getOkClient(ApiRequest request) {
+        OkHttpClient client1;
+        client1 = getUnsafeOkHttpClient(request);
+        return client1;
+    }
 
-        @GET(ACTION_COMMON_HOME_GUEST)
-        Observable<CommonGuestBean> homeGuest();
+    private static OkHttpClient getUnsafeOkHttpClient(ApiRequest request) {
+        try {
+            final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                }
 
+                @Override
+                public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                }
+
+                @Override
+                public X509Certificate[] getAcceptedIssuers() {
+                    return new X509Certificate[]{};
+                }
+            }};
+            // Install the all-trusting trust manager
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, trustAllCerts, new SecureRandom());
+            // Create an ssl socket factory with our all-trusting manager
+            SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+            OkHttpClient.Builder okBuilder = new OkHttpClient.Builder();
+            okBuilder.readTimeout(20, TimeUnit.SECONDS);
+            okBuilder.connectTimeout(10, TimeUnit.SECONDS);
+            okBuilder.writeTimeout(20, TimeUnit.SECONDS);
+            okBuilder.addInterceptor(new HttpHeadInterceptor(request));
+//            okBuilder.addInterceptor(getInterceptor());
+            okBuilder.sslSocketFactory(sslSocketFactory);
+            okBuilder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+//                    Log.d("HttpUtils", "==come");
+                    return true;
+                }
+            });
+
+            return okBuilder.build();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    static class HttpHeadInterceptor implements Interceptor {
+
+        private ApiRequest apiRequest;
+
+        private HttpHeadInterceptor(ApiRequest request) {
+            apiRequest = request;
+        }
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+            Request.Builder builder = request.newBuilder();
+            builder.addHeader("Accept", "application/json;versions=1");
+            if (NetWorkUtils.isConnectedByState(MyApplication.getInstance())) {
+                int maxAge = 60;
+                builder.addHeader("Cache-Control", "public, max-age=" + maxAge);
+            } else {
+                int maxStale = 60 * 60 * 24 * 28;
+                builder.addHeader("Cache-Control", "public, only-if-cached, max-stale=" + maxStale);
+            }
+            // 可添加token
+//            if (listener != null) {
+//                builder.addHeader("token", listener.getToken());
+//            }
+            // 如有需要，添加请求头
+//            builder.addHeader("a", HttpHead.getHeader(request.method()));
+
+
+            doSignature(apiRequest, builder);
+
+            return chain.proceed(builder.build());
+        }
     }
 
     /**
      * 初始化头部信息
      */
-    private static void doSignature(ApiRequest httpRequest) {
+    private static void doSignature(ApiRequest request, Request.Builder builder) {
         String time = String.valueOf(new Date().getTime());
-        String canonicalizedHeaders = "";
         UserModel user = UserService.getInstance().getSharePrefUser(MyApplication.getInstance());
+        String canonicalizedHeaders =
+                "x-codingfeel-time:" + time + "\n" +
+                        "x-codingfeel-terminal:" + "android\n" +
+                        "x-codingfeel-version:" + MyApplication.getInstance().getVersion();
 
-        if (httpRequest.isGuide()) {
+
+        if (request.isGuide()) {
+            headers = new Headers.Builder()
+                    .add("x-codingfeel-terminal", "android")
+                    .add("x-codingfeel-version", MyApplication.getInstance().getVersion())
+                    .add("Charset", "utf-8")
+                    .add("x-codingfeel-time", time)
+                    .build();
+            builder.headers(headers);
             return;
         }
 
@@ -169,13 +204,13 @@ public class ApiClient {
 
 
         //请求参数格式化
-        String canonicalizedParmas = getCanonicalizedParams(httpRequest);
+        String canonicalizedParmas = getCanonicalizedParams(request);
 
 
         //拼接成要加密的内容
         String content =
-                httpRequest.matchMethod(httpRequest.getMethod()) + "\n"
-                        + getSignNetworkUri(httpRequest) + "\n"
+                request.matchMethod(request.getMethod()) + "\n"
+                        + getSignNetworkUri(request) + "\n"
                         + token + "\n"
                         + canonicalizedHeaders + "\n"
                         + canonicalizedParmas + "\n";
@@ -195,7 +230,21 @@ public class ApiClient {
         } catch (InvalidKeyException e) {
             e.printStackTrace();
         }
+
+
+        headers = new Headers.Builder()
+                .add("x-codingfeel-terminal", "android")
+                .add("x-codingfeel-version", MyApplication.getInstance().getVersion())
+                .add("Charset", "utf-8")
+                .add("x-codingfeel-uid", String.valueOf(uid))
+                .add("x-codingfeel-time", time)
+                .add("Authorization", "Basic " + token + ":" + signature)
+                .build();
+
+        builder.headers(headers);
+
     }
+
 
     private static String getSignNetworkUri(ApiRequest httpRequest) {
         String signUri = httpRequest.getHttpUrl().replaceFirst(BuildConfig.HTTP_SERVER, "");

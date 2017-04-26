@@ -92,6 +92,12 @@ public class ApiRequest {
         int PATCH = 7;
     }
 
+    public void addParams(String key, String value) {
+        if (value != null) {
+            params.put(key, value);
+        }
+    }
+
     public Map<String, String> getParams() {
         return params;
     }

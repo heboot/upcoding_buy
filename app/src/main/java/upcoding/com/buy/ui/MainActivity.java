@@ -1,60 +1,81 @@
 package upcoding.com.buy.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-
-import java.lang.reflect.Method;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import upcoding.com.buy.R;
-import upcoding.com.buy.utils.DensityUtil;
-import upcoding.com.buy.utils.LogUtils;
+import upcoding.com.buy.ui.recommend.RecommentFragment;
 
 public class MainActivity extends ToolbarActivity {
 
+
+    @BindView(R.id.flyt_main_container)
+    FrameLayout flytMainContainer;
+    @BindView(R.id.ib_main_recommend)
+    ImageButton ibMainRecommend;
+    @BindView(R.id.ib_main_post)
+    ImageButton ibMainPost;
+    @BindView(R.id.ib_main_msg)
+    ImageButton ibMainMsg;
+    @BindView(R.id.ib_main_my)
+    ImageButton ibMainMy;
+    @BindView(R.id.llyt_main_bottom)
+    LinearLayout llytMainBottom;
+    @BindView(R.id.activity_main)
+    ConstraintLayout activityMain;
+
+    private ImageButton[] buttons;
+
+    private RecommentFragment recommentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-//        CommonService.getInstance().homeGuest().subscribe(new RxSubcribe<CommonGuestBean>() {
-//            @Override
-//            protected void _onNext(CommonGuestBean bean) {
-//                LogUtils.e(TAG, bean.toString());
-//            }
-//
-//            @Override
-//            protected void _onError(String msg) {
-//                LogUtils.e(TAG + ">>>>>>", msg);
-//            }
-//        });
+        initData();
+        initListener();
+        initFragments();
     }
 
-    public boolean checkDeviceHasNavigationBar(Context context) {
-        boolean hasNavigationBar = false;
-        Resources rs = context.getResources();
-        int id = rs.getIdentifier("config_showNavigationBar", "bool", "android");
-        if (id > 0) {
-            hasNavigationBar = rs.getBoolean(id);
+    private void initFragments() {
+        recommentFragment = new RecommentFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(flytMainContainer.getId(), recommentFragment);
+        fragmentTransaction.commit();
+        fragmentTransaction.show(recommentFragment);
+    }
+
+    private void initListener() {
+        for (ImageButton imageButton : buttons) {
+            imageButton.setOnClickListener(event -> {
+                checkMenu(imageButton.getTag().toString());
+            });
         }
-        try {
-            Class systemPropertiesClass = Class.forName("android.os.SystemProperties");
-            Method m = systemPropertiesClass.getMethod("get", String.class);
-            String navBarOverride = (String) m.invoke(systemPropertiesClass, "qemu.hw.mainkeys");
-            if ("1".equals(navBarOverride)) {
-                hasNavigationBar = false;
-            } else if ("0".equals(navBarOverride)) {
-                hasNavigationBar = true;
+        ibMainRecommend.performClick();
+    }
+
+    private void initData() {
+        buttons = new ImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
+    }
+
+
+    private void checkMenu(String tag) {
+        for (ImageButton imageButton : buttons) {
+            if (imageButton.getTag().equals(tag)) {
+                imageButton.setImageResource(R.drawable.ic_account_balance_red_24dp);
+            } else {
+                imageButton.setImageResource(R.drawable.ic_account_balance_gray_24dp);
             }
-        } catch (Exception e) {
         }
-        return hasNavigationBar;
     }
 
 
