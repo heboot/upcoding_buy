@@ -6,7 +6,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
     defaultConfig {
-        applicationId "upcoding.com.buy"
+        applicationId "com.upcoding.buy"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
