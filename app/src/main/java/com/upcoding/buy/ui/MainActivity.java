@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import com.upcoding.buy.R;
 import com.upcoding.buy.ui.recommend.RecommentFragment;
 
