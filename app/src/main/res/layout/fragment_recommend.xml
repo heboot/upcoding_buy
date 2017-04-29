@@ -1,41 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
+    <data class=".RecommendBind">
         <!-- infoModel-->
         <variable
-            name="infoModel"
-            type="com.upcoding.buy.model.InfoModel"></variable>
+            name="adapter"
+            type="com.upcoding.buy.adapter.MyAdapter"></variable>
 
     </data>
 
-
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_recommend"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        app:adapter="@{adapter}"></android.support.v7.widget.RecyclerView>
 
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_recommend"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/gray"></android.support.v7.widget.RecyclerView>
-
-        <View
-            android:id="@+id/v_recommend_top"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorPrimary"></View>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginBottom="6dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/red_100"
-            android:maxLines="1" />
-    </RelativeLayout>
 </layout>

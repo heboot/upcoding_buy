@@ -12,32 +12,39 @@ import com.upcoding.buy.R;
 import com.upcoding.buy.adapter.baseadapter.BaseRecyclerViewAdapter;
 import com.upcoding.buy.adapter.baseadapter.BaseRecyclerViewHolder;
 import com.upcoding.buy.bean.InfoHomeBean;
+import com.upcoding.buy.databinding.ItemBinding;
 import com.upcoding.buy.model.InfoModel;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.upcoding.buy.utils.LogUtils;
 
 /**
  * Created by Heboot on 2017/4/26.
- * //test  extends BaseRecyclerViewAdapter<InfoModel>
+ * //test
  */
 
-public class MyAdapter {
-//    @Override
-//    public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        return new Viewholder;
-//    }
-//
-//    private class ViewHolder extends BaseRecyclerViewHolder<InfoModel, > {
-//
-//        ViewHolder(ViewGroup parent, int layout) {
-//            super(parent, layout);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(final InfoModel bean, int position) {
-//            binding.(bean);
-//            binding.llItem.setOnClickListener(new PerfectClickListener() {
+public class MyAdapter extends BaseRecyclerViewAdapter<InfoModel> {
+
+    InfoHomeBean bean;
+
+    public MyAdapter(InfoHomeBean beabn) {
+        data = beabn.getInfo();
+    }
+
+    @Override
+    public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ViewHolder(parent, R.layout.item);
+    }
+
+    private class ViewHolder extends BaseRecyclerViewHolder<InfoModel, ItemBinding> {
+
+        ViewHolder(ViewGroup parent, int layout) {
+            super(parent, layout);
+        }
+
+
+        @Override
+        public void onBindViewHolder(final InfoModel beana, int position) {
+            binding.setInfoModel(beana);
+//            binding.tvItem.setOnClickListener(new PerfectClickListener() {
 //                @Override
 //                protected void onNoDoubleClick(View v) {
 //                    if (bean != null && !TextUtils.isEmpty(bean.getAlt())) {
@@ -45,7 +52,7 @@ public class MyAdapter {
 //                    }
 //                }
 //            });
-//        }
-//    }
+        }
+    }
 
 }

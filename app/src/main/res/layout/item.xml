@@ -5,14 +5,14 @@
 
         <variable
             name="infoModel"
-            type="com.upcoding.buy.model.InfoModel" />
-
+            type="com.upcoding.buy.model.InfoModel"></variable>
     </data>
 
     <TextView
         android:id="@+id/tv_item"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:background="@drawable/bg_main_recommand" />
+        android:background="@drawable/bg_main_recommand"
+        android:text="@{infoModel.title}" />
 
 </layout>
