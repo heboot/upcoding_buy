@@ -14,6 +14,7 @@ import com.upcoding.buy.R;
 import com.upcoding.buy.RecommendBind;
 import com.upcoding.buy.adapter.MyAdapter;
 import com.upcoding.buy.bean.InfoHomeBean;
+import com.upcoding.buy.model.InfoModel;
 import com.upcoding.buy.service.InfoService;
 import com.upcoding.buy.utils.LogUtils;
 
@@ -67,6 +68,7 @@ public class RecommentFragment extends Fragment {
                         LogUtils.e(TAG, "onNext");
 //                        bind.setInfoModel(bean.getInfo().get(0));
 //                        rvRecommend.setAdapter();
+//                        bean.getInfo().add(0,new InfoModel());
                         bind.setAdapter(new MyAdapter(bean));
                     }
                 });

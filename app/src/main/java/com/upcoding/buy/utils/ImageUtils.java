@@ -1,6 +1,7 @@
 package com.upcoding.buy.utils;
 
 import android.content.Context;
+import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
@@ -13,6 +14,15 @@ import java.io.File;
  * Created by Heboot on 16/6/24.
  */
 public class ImageUtils {
+
+    /**
+     * 首页推荐列表的图片
+     */
+    @BindingAdapter("android:showImg")
+    public static void showImg(ImageView imageView, String url) {
+        displayImage(imageView.getContext(), url, imageView);
+    }
+
 
     /**
      * 展示图片
@@ -56,7 +66,6 @@ public class ImageUtils {
     public static void displayImage(Context context, String url, ImageView imageView, int resId) {
         Picasso.with(context).load(url).placeholder(resId).into(imageView);
     }
-
 
 
     // 根据路径获得图片并压缩，返回bitmap用于显示
