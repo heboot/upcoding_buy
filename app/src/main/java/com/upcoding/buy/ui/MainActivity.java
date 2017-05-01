@@ -19,16 +19,16 @@ public class MainActivity extends ToolbarActivity {
 
     @BindView(R.id.flyt_main_container)
     FrameLayout flytMainContainer;
-    @BindView(R.id.ib_main_recommend)
-    ImageButton ibMainRecommend;
-    @BindView(R.id.ib_main_post)
-    ImageButton ibMainPost;
-    @BindView(R.id.ib_main_msg)
-    ImageButton ibMainMsg;
-    @BindView(R.id.ib_main_my)
-    ImageButton ibMainMy;
-    @BindView(R.id.llyt_main_bottom)
-    LinearLayout llytMainBottom;
+//    @BindView(R.id.ib_main_recommend)
+//    ImageButton ibMainRecommend;
+//    @BindView(R.id.ib_main_post)
+//    ImageButton ibMainPost;
+//    @BindView(R.id.ib_main_msg)
+//    ImageButton ibMainMsg;
+//    @BindView(R.id.ib_main_my)
+//    ImageButton ibMainMy;
+//    @BindView(R.id.llyt_main_bottom)
+//    LinearLayout llytMainBottom;
     @BindView(R.id.activity_main)
     ConstraintLayout activityMain;
 
@@ -41,8 +41,8 @@ public class MainActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        initData();
-        initListener();
+//        initData();
+//        initListener();
         initFragments();
     }
 
@@ -61,11 +61,11 @@ public class MainActivity extends ToolbarActivity {
                 checkMenu(imageButton.getTag().toString());
             });
         }
-        ibMainRecommend.performClick();
+//        ibMainRecommend.performClick();
     }
 
     private void initData() {
-        buttons = new ImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
+//        buttons = new ImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
     }
 
 

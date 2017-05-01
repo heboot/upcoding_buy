@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.upcoding.buy.ui.MainActivity">
-
-    <FrameLayout
-        android:id="@+id/flyt_main_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
-
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/llyt_main_bottom"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent">
-
+        android:background="@color/white">
 
         <ImageButton
             android:id="@+id/ib_main_recommend"
@@ -68,5 +57,4 @@
             android:src="@drawable/ic_account_balance_gray_24dp"
             android:tag="ib_main_my" />
     </LinearLayout>
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
