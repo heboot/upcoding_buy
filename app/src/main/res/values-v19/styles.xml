@@ -1,13 +1,13 @@
 <resources>
 
-    <!--&lt;!&ndash;这句话意为在api大于等于19以上版本为状态栏透明&ndash;&gt;-->
-    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
-        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
+    <!--这句话意为在api大于等于19以上版本为状态栏透明-->
+    <style name="AppTheme.NoActionBarT" parent="AppTheme.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">true</item>
         <!--<item name="colorPrimary">@android:color/holo_orange_dark</item>-->
         <!--<item name="android:windowBackground">?android:attr/colorBackground</item>-->
         <!--<item name="colorAccent">@android:color/holo_purple</item>-->
         <!--<item name="colorPrimaryDark">@android:color/holo_red_dark</item>-->
-    <!--</style>-->
+    </style>
 
 </resources>

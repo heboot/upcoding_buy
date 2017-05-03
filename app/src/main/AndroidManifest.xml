@@ -35,7 +35,7 @@
 
         <activity
             android:name=".ui.recommend.RecommentDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBarT" />
 
     </application>
 
