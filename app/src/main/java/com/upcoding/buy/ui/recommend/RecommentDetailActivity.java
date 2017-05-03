@@ -20,15 +20,14 @@ public class RecommentDetailActivity extends ToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test);
-//        InfoDetailBind infoDetailBind = DataBindingUtil.setContentView(this, R.layout.activity_info_detail);
-//
-//
-//        infoModel = (InfoModel) getIntent().getExtras().get(ContentKey.INFO_MODEL);
-//        if (infoModel != null) {
-//            infoDetailBind.setInfoModel(infoModel);
-//        } else {
-//        }
+        InfoDetailBind infoDetailBind = DataBindingUtil.setContentView(this, R.layout.activity_info_detail);
+
+
+        infoModel = (InfoModel) getIntent().getExtras().get(ContentKey.INFO_MODEL);
+        if (infoModel != null) {
+            infoDetailBind.setInfoModel(infoModel);
+        } else {
+        }
 
     }
 }

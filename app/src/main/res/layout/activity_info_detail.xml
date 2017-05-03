@@ -13,8 +13,7 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
 
         <android.support.design.widget.AppBarLayout
@@ -25,6 +24,7 @@
             <android.support.design.widget.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:contentScrim="@color/colorPrimary"
                 app:expandedTitleMarginEnd="64dp"
                 app:expandedTitleMarginStart="48dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -43,10 +43,10 @@
 
                 <android.support.v7.widget.Toolbar
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@color/red_100"
+                    android:layout_height="70dp"
                     android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:layout_collapseMode="pin"></android.support.v7.widget.Toolbar>
+                    app:layout_collapseMode="pin"
+                    app:titleTextColor="@color/white"></android.support.v7.widget.Toolbar>
 
 
             </android.support.design.widget.CollapsingToolbarLayout>
@@ -54,7 +54,7 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
             android:id="@+id/sv_infodetail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -72,7 +72,7 @@
                 android:textSize="28sp" />
 
 
-        </ScrollView>
+        </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
 
 </layout>
