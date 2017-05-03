@@ -69,7 +69,7 @@ public class RecommentFragment extends Fragment {
 //                        bind.setInfoModel(bean.getInfo().get(0));
 //                        rvRecommend.setAdapter();
 //                        bean.getInfo().add(0,new InfoModel());
-                        bind.setAdapter(new MyAdapter(bean));
+                        bind.setAdapter(new MyAdapter(bean, getActivity()));
                     }
                 });
     }
