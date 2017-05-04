@@ -2,29 +2,32 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
-    app:layout_collapseMode="pin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?attr/actionBarSize"
+    app:layout_collapseMode="pin"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="75dp"
+        android:paddingTop="35dp">
 
         <ImageButton
-            android:id="@+id/tv_toolbar_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_back_black_24dp"
-            android:gravity="right|center_vertical" />
+            android:id="@+id/ib_toolbar_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="?android:selectableItemBackground"
+            android:gravity="right|center_vertical"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center|left"
             android:gravity="center"
             android:text="sdagasdg"
@@ -33,13 +36,13 @@
 
         <ImageButton
             android:id="@+id/tv_toolbar_send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/x30"
-            android:background="@drawable/ic_send_black_24dp"
+            android:background="?android:selectableItemBackground"
             android:gravity="left|center_vertical"
-            android:paddingRight="@dimen/x36" />
+            android:paddingRight="@dimen/x36"
+            android:src="@drawable/ic_send_black_24dp" />
     </RelativeLayout>
 
 

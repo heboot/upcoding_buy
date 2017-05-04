@@ -22,7 +22,7 @@ public class RecommentDetailActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         InfoDetailBind infoDetailBind = DataBindingUtil.setContentView(this, R.layout.activity_info_detail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setHomeButtonEnabled(true);
         infoModel = (InfoModel) getIntent().getExtras().get(ContentKey.INFO_MODEL);
         if (infoModel != null) {
             infoDetailBind.setInfoModel(infoModel);

@@ -3,8 +3,15 @@ package com.upcoding.buy.ui;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.upcoding.buy.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Heboot on 2017/1/11.
@@ -13,6 +20,9 @@ import com.upcoding.buy.R;
 public class ToolbarActivity extends AppCompatActivity {
 
     protected String TAG = this.getClass().getName();
+
+    private Toolbar toolbar;
+//    private ImageButton ibToolBarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +36,31 @@ public class ToolbarActivity extends AppCompatActivity {
 ////            localLayoutParams.flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
 //        }
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+    }
+
+
+    private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
+    }
+
+    protected void setToolBarTitle(String title) {
+//        if (tvToolbarTitle != null) {
+//            tvToolbarTitle.setText(title);
+//        }
+    }
+
+    protected void showToolBarSend(View.OnClickListener listener) {
+//        tvToolbarSend.setVisibility(View.VISIBLE);
+//        tvToolbarSend.setOnClickListener(listener);
     }
 
 
