@@ -19,7 +19,7 @@ public class StringUtils {
 
     /**
      * is null or its length is 0 or it is made by space
-     *
+     * <p>
      * <pre>
      * isBlank(null) = true;
      * isBlank(&quot;&quot;) = true;
@@ -42,7 +42,7 @@ public class StringUtils {
 
     /**
      * is null or its length is 0
-     *
+     * <p>
      * <pre>
      * isEmpty(null) = true;
      * isEmpty(&quot;&quot;) = true;
@@ -61,7 +61,7 @@ public class StringUtils {
 
     /**
      * get length of CharSequence
-     *
+     * <p>
      * <pre>
      * length(null) = 0;
      * length(\"\") = 0;
@@ -80,7 +80,7 @@ public class StringUtils {
 
     /**
      * null Object to empty string
-     *
+     * <p>
      * <pre>
      * nullStrToEmpty(null) = &quot;&quot;;
      * nullStrToEmpty(&quot;&quot;) = &quot;&quot;;
@@ -190,11 +190,9 @@ public class StringUtils {
                 source[i] = ' ';
                 // } else if (source[i] == 12290) {
                 // source[i] = '.';
-            }
-            else if (source[i] >= 65281 && source[i] <= 65374) {
+            } else if (source[i] >= 65281 && source[i] <= 65374) {
                 source[i] = (char) (source[i] - 65248);
-            }
-            else {
+            } else {
                 source[i] = source[i];
             }
         }
@@ -218,11 +216,9 @@ public class StringUtils {
                 source[i] = (char) 12288;
                 // } else if (source[i] == '.') {
                 // source[i] = (char)12290;
-            }
-            else if (source[i] >= 33 && source[i] <= 126) {
+            } else if (source[i] >= 33 && source[i] <= 126) {
                 source[i] = (char) (source[i] + 65248);
-            }
-            else {
+            } else {
                 source[i] = source[i];
             }
         }
@@ -313,7 +309,7 @@ public class StringUtils {
     /**
      * 在给定的字符串中，用新的字符替换所有旧的字符
      *
-     * @param string 给定的字符串
+     * @param string  给定的字符串
      * @param oldchar 旧的字符
      * @param newchar 新的字符
      * @return 替换后的字符串
@@ -334,7 +330,7 @@ public class StringUtils {
      * 把给定的字符串用给定的字符分割
      *
      * @param string 给定的字符串
-     * @param ch 给定的字符
+     * @param ch     给定的字符
      * @return 分割后的字符串数组
      */
     public static String[] split(String string, char ch) {
@@ -374,8 +370,7 @@ public class StringUtils {
             if (ch >= '\u0391' && ch <= '\uFFE5') {
                 length++;
                 length++;
-            }
-            else {
+            } else {
                 length++;
             }
         }
@@ -414,13 +409,11 @@ public class StringUtils {
     }
 
 
-
-
     /**
      * 删除给定字符串中所有的旧的字符
      *
      * @param string 源字符串
-     * @param ch 要删除的字符
+     * @param ch     要删除的字符
      * @return 删除后的字符串
      */
     public static String removeChar(String string, char ch) {
@@ -438,18 +431,16 @@ public class StringUtils {
      * 删除给定字符串中给定位置处的字符
      *
      * @param string 给定字符串
-     * @param index 给定位置
+     * @param index  给定位置
      */
     public static String removeChar(String string, int index) {
         String result = null;
         char[] chars = string.toCharArray();
         if (index == 0) {
             result = new String(chars, 1, chars.length - 1);
-        }
-        else if (index == chars.length - 1) {
+        } else if (index == chars.length - 1) {
             result = new String(chars, 0, chars.length - 1);
-        }
-        else {
+        } else {
             result = new String(chars, 0, index) +
                     new String(chars, index + 1, chars.length - index);
             ;
@@ -462,8 +453,8 @@ public class StringUtils {
      * 删除给定字符串中给定位置处的字符
      *
      * @param string 给定字符串
-     * @param index 给定位置
-     * @param ch 如果同给定位置处的字符相同，则将给定位置处的字符删除
+     * @param index  给定位置
+     * @param ch     如果同给定位置处的字符相同，则将给定位置处的字符删除
      */
     public static String removeChar(String string, int index, char ch) {
         String result = null;
@@ -471,17 +462,14 @@ public class StringUtils {
         if (chars.length > 0 && chars[index] == ch) {
             if (index == 0) {
                 result = new String(chars, 1, chars.length - 1);
-            }
-            else if (index == chars.length - 1) {
+            } else if (index == chars.length - 1) {
                 result = new String(chars, 0, chars.length - 1);
-            }
-            else {
+            } else {
                 result = new String(chars, 0, index) +
                         new String(chars, index + 1, chars.length - index);
                 ;
             }
-        }
-        else {
+        } else {
             result = string;
         }
         return result;
@@ -497,8 +485,7 @@ public class StringUtils {
     public static String filterBlank(String string) {
         if ("".equals(string)) {
             return null;
-        }
-        else {
+        } else {
             return string;
         }
     }
@@ -507,9 +494,9 @@ public class StringUtils {
     /**
      * 将给定字符串中给定的区域的字符转换成小写
      *
-     * @param str 给定字符串中
+     * @param str        给定字符串中
      * @param beginIndex 开始索引（包括）
-     * @param endIndex 结束索引（不包括）
+     * @param endIndex   结束索引（不包括）
      * @return 新的字符串
      */
     public static String toLowerCase(String str, int beginIndex, int endIndex) {
@@ -522,9 +509,9 @@ public class StringUtils {
     /**
      * 将给定字符串中给定的区域的字符转换成大写
      *
-     * @param str 给定字符串中
+     * @param str        给定字符串中
      * @param beginIndex 开始索引（包括）
-     * @param endIndex 结束索引（不包括）
+     * @param endIndex   结束索引（不包括）
      * @return 新的字符串
      */
     public static String toUpperCase(String str, int beginIndex, int endIndex) {
@@ -594,20 +581,18 @@ public class StringUtils {
      * 判断给定的字符串是否以一个特定的字符串开头，忽略大小写
      *
      * @param sourceString 给定的字符串
-     * @param newString 一个特定的字符串
+     * @param newString    一个特定的字符串
      */
     public static boolean startsWithIgnoreCase(String sourceString, String newString) {
         int newLength = newString.length();
         int sourceLength = sourceString.length();
         if (newLength == sourceLength) {
             return newString.equalsIgnoreCase(sourceString);
-        }
-        else if (newLength < sourceLength) {
+        } else if (newLength < sourceLength) {
             char[] newChars = new char[newLength];
             sourceString.getChars(0, newLength, newChars, 0);
             return newString.equalsIgnoreCase(String.valueOf(newChars));
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -617,21 +602,19 @@ public class StringUtils {
      * 判断给定的字符串是否以一个特定的字符串结尾，忽略大小写
      *
      * @param sourceString 给定的字符串
-     * @param newString 一个特定的字符串
+     * @param newString    一个特定的字符串
      */
     public static boolean endsWithIgnoreCase(String sourceString, String newString) {
         int newLength = newString.length();
         int sourceLength = sourceString.length();
         if (newLength == sourceLength) {
             return newString.equalsIgnoreCase(sourceString);
-        }
-        else if (newLength < sourceLength) {
+        } else if (newLength < sourceLength) {
             char[] newChars = new char[newLength];
             sourceString.getChars(sourceLength - newLength, sourceLength,
                     newChars, 0);
             return newString.equalsIgnoreCase(String.valueOf(newChars));
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -657,4 +640,6 @@ public class StringUtils {
     public static String checkLength(String string, int maxLength) {
         return checkLength(string, maxLength, "…");
     }
+
+
 }

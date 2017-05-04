@@ -19,6 +19,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField 'boolean', 'LOGDEBUG', "true"
             buildConfigField 'String', 'HTTP_SERVER', "\"http://api.codingfeel.com/boom/\""
+            buildConfigField 'String', 'H5SERVER', "\"http://h5.codingfeel.com\""
         }
         debug {
             minifyEnabled false
@@ -27,6 +28,7 @@ android {
             buildConfigField 'boolean', 'LOGDEBUG', "true"
             buildConfigField 'String', 'HTTP_SERVER', "\"http://api.codingfeel.com/boom/\""
 //            buildConfigField 'String', 'HTTP_SERVER', "\"http://api.codingfeel.com/boom\""
+            buildConfigField 'String', 'H5SERVER', "\"http://h5.codingfeel.com\""
         }
     }
     compileOptions {

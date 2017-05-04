@@ -16,6 +16,7 @@ public class WebUtils {
     @BindingAdapter("android:loadUrl")
     public static void loadUrl(WebView webView, String url) {
         initWebView(webView);
+        loadWebView(webView);
         webView.loadUrl(url);
     }
 

@@ -4,6 +4,8 @@
 
     <data class="InfoDetailBind">
 
+        <import type="com.upcoding.buy.BuildConfig"></import>
+
         <variable
             name="infoModel"
             type="com.upcoding.buy.model.InfoModel"></variable>
@@ -61,14 +63,14 @@
             android:background="@color/white"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <TextView
+            <WebView
                 android:id="@+id/wv_info_detail_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/x10"
                 android:layout_marginRight="@dimen/x10"
                 android:layout_marginTop="@dimen/y31"
-                android:text="sadgas/ndgsd/nsadgasdgsdagsadgasdgsdagsad/ngasdgsdagsadgasdgsdag/n/nsadgas/ndgsdagsadgasdgsdagsadgasdg/n/nsdagsadgasdgsdagsadgasdgsdag/n/nsadgasdgsdagsadgasdg/nsdagsadgas/n/ndgsdagsadgasdgsdagsadgasdgsdagsa/n/n/ndgasdgsdagsadgasdgsdagsadga/n/n/nsdgsdagsadgas/ndgsdags/nadgasdgsdags/nadgasdgsdagsadgasdgsdagsa/ndgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdag/n/n/nsadgasdgsdagsadgasdgsdagsadga/nsdgsdagsadgasdgsdagsadgasdg/nsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagsadgasdgsdagag"
+                android:loadUrl="@{BuildConfig.H5SERVER+`/info.html?infoId=`+infoModel.infoId+`&amp;app=1`}"
                 android:textSize="28sp" />
 
 
