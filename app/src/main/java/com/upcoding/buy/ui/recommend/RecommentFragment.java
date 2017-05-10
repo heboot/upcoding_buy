@@ -1,5 +1,7 @@
 package com.upcoding.buy.ui.recommend;
 
+import android.app.Activity;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,6 +36,8 @@ public class RecommentFragment extends Fragment {
     @BindView(R.id.rv_recommend)
     RecyclerView rvRecommend;
 
+    private Activity mActivity;
+
 
     @Nullable
     @Override
@@ -45,6 +49,7 @@ public class RecommentFragment extends Fragment {
         initData();
         return bind.getRoot();
     }
+
 
     protected void initData() {
         InfoService.getInstance().home(1, 10, "")

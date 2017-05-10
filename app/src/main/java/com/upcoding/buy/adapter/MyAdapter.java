@@ -1,5 +1,6 @@
 package com.upcoding.buy.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -27,11 +28,11 @@ import com.upcoding.buy.utils.LogUtils;
 
 public class MyAdapter extends BaseRecyclerViewAdapter<InfoModel> {
 
-    private Context context;
+    private Activity activity;
 
-    public MyAdapter(InfoHomeBean beabn, Context c) {
+    public MyAdapter(InfoHomeBean beabn, Activity c) {
         data = beabn.getInfo();
-        context = c;
+        activity = c;
     }
 
     public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -53,7 +54,7 @@ public class MyAdapter extends BaseRecyclerViewAdapter<InfoModel> {
             binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    IntentUtil.intent2InfoDetailActivity(context, beana);
+                    IntentUtil.intent2InfoDetailActivity(activity, beana, view);
                 }
             });
         }

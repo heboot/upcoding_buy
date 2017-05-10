@@ -42,7 +42,7 @@
                         android:fitsSystemWindows="true"
                         android:scaleType="fitXY"
                         android:showImg="@{infoModel.bigImgUrl}"
-                        app:layout_collapseMode="parallax"
+                        app:layout_collapseMode="pin"
                         app:layout_collapseParallaxMultiplier="0.7" />
 
                     <include
@@ -142,7 +142,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="?android:selectableItemBackground"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_comment_white_24dp" />
 
             <ImageButton
