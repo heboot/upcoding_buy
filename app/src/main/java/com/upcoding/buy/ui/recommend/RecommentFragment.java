@@ -1,7 +1,6 @@
 package com.upcoding.buy.ui.recommend;
 
 import android.app.Activity;
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,9 +13,8 @@ import android.view.ViewGroup;
 
 import com.upcoding.buy.R;
 import com.upcoding.buy.RecommendBind;
-import com.upcoding.buy.adapter.MyAdapter;
+import com.upcoding.buy.adapter.InfoAdapter;
 import com.upcoding.buy.bean.InfoHomeBean;
-import com.upcoding.buy.model.InfoModel;
 import com.upcoding.buy.service.InfoService;
 import com.upcoding.buy.utils.LogUtils;
 
@@ -42,7 +40,7 @@ public class RecommentFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        bind = DataBindingUtil.inflate(inflater, R.layout.fragment_recommend, container, false);
+        bind = DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false);
         ButterKnife.bind(this, bind.getRoot());
         rvRecommend.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
@@ -74,7 +72,7 @@ public class RecommentFragment extends Fragment {
 //                        bind.setInfoModel(bean.getInfo().get(0));
 //                        rvRecommend.setAdapter();
 //                        bean.getInfo().add(0,new InfoModel());
-                        bind.setAdapter(new MyAdapter(bean, getActivity()));
+                        bind.setAdapter(new InfoAdapter(bean, getActivity()));
                     }
                 });
     }

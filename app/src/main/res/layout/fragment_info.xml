@@ -6,7 +6,7 @@
         <!-- infoModel-->
         <variable
             name="adapter"
-            type="com.upcoding.buy.adapter.MyAdapter"></variable>
+            type="com.upcoding.buy.adapter.InfoAdapter"></variable>
 
     </data>
 

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class=".PostBind">
+        <!-- infoModel-->
+        <variable
+            name="adapter"
+            type="com.upcoding.buy.adapter.InfoAdapter"></variable>
+
+    </data>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:adapter="@{adapter}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v7.widget.RecyclerView>
+
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="35dp"
+                android:background="@color/red_100"
+                android:maxLines="1"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                app:layout_scrollFlags="scroll|enterAlways"></android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</layout>

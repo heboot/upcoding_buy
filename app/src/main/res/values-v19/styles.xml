@@ -4,10 +4,10 @@
     <style name="AppTheme.NoActionBarT" parent="AppTheme.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus">true</item>
-        <!--<item name="colorPrimary">@android:color/holo_orange_dark</item>-->
-        <!--<item name="android:windowBackground">?android:attr/colorBackground</item>-->
-        <!--<item name="colorAccent">@android:color/holo_purple</item>-->
-        <!--<item name="colorPrimaryDark">@android:color/holo_red_dark</item>-->
+        <!--<item_home_info name="colorPrimary">@android:color/holo_orange_dark</item_home_info>-->
+        <!--<item_home_info name="android:windowBackground">?android:attr/colorBackground</item_home_info>-->
+        <!--<item_home_info name="colorAccent">@android:color/holo_purple</item_home_info>-->
+        <!--<item_home_info name="colorPrimaryDark">@android:color/holo_red_dark</item_home_info>-->
     </style>
 
 </resources>

@@ -22,7 +22,7 @@ public abstract class BaseRecyclerViewHolder<T, D extends ViewDataBinding> exten
 
     /**
      * @param object   the data of bind
-     * @param position the item position of recyclerView
+     * @param position the item_home_info position of recyclerView
      */
     public abstract void onBindViewHolder(T object, final int position);
 

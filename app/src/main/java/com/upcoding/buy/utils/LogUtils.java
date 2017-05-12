@@ -12,7 +12,7 @@ public class LogUtils {
 
     public static void e(String tag, String message) {
         if (BuildConfig.LOGDEBUG) {
-//            Log.e(tag, message);
+            Log.e(tag, message);
         }
     }
 
