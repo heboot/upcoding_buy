@@ -7,7 +7,8 @@ import com.upcoding.buy.R;
 import com.upcoding.buy.adapter.baseadapter.BaseRecyclerViewAdapter;
 import com.upcoding.buy.adapter.baseadapter.BaseRecyclerViewHolder;
 import com.upcoding.buy.bean.PostHomeBean;
-import com.upcoding.buy.databinding.ItemBinding;
+import com.upcoding.buy.databinding.ItemHomeInfoBind;
+import com.upcoding.buy.databinding.ItemHomePostBind;
 import com.upcoding.buy.model.PostModel;
 
 /**
@@ -25,12 +26,12 @@ public class PostAdapter extends BaseRecyclerViewAdapter<PostModel> {
     }
 
     public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(parent, R.layout.item_home_info);
+        return new ViewHolder(parent, R.layout.item_home_post);
 //        }
     }
 
 
-    private class ViewHolder extends BaseRecyclerViewHolder<PostModel, ItemBinding> {
+    private class ViewHolder extends BaseRecyclerViewHolder<PostModel, ItemHomePostBind> {
 
         ViewHolder(ViewGroup parent, int layout) {
             super(parent, layout);

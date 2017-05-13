@@ -4,4 +4,9 @@
 
     <string name="main_bottom_menu_recommend" translatable="false">推荐</string>
 
+    <string name="tag_main_bottom_menu_recommend">ib_main_recommend</string>
+    <string name="tag_main_bottom_menu_post">ib_main_post</string>
+    <string name="tag_main_bottom_menu_msg">ib_main_msg</string>
+    <string name="tag_main_bottom_menu_my">ib_main_my</string>
+
 </resources>

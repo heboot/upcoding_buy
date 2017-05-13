@@ -7,7 +7,7 @@ import com.upcoding.buy.R;
 import com.upcoding.buy.adapter.baseadapter.BaseRecyclerViewAdapter;
 import com.upcoding.buy.adapter.baseadapter.BaseRecyclerViewHolder;
 import com.upcoding.buy.bean.InfoHomeBean;
-import com.upcoding.buy.databinding.ItemBinding;
+import com.upcoding.buy.databinding.ItemHomeInfoBind;
 import com.upcoding.buy.model.InfoModel;
 import com.upcoding.buy.utils.IntentUtil;
 
@@ -31,7 +31,7 @@ public class InfoAdapter extends BaseRecyclerViewAdapter<InfoModel> {
     }
 
 
-    private class ViewHolder extends BaseRecyclerViewHolder<InfoModel, ItemBinding> {
+    private class ViewHolder extends BaseRecyclerViewHolder<InfoModel, ItemHomeInfoBind> {
 
         ViewHolder(ViewGroup parent, int layout) {
             super(parent, layout);

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
+    <data class="ItemHomeInfoBind">
 
         <variable
             name="infoModel"
@@ -11,12 +11,12 @@
 
 
     <android.support.v7.widget.CardView
-        android:elevation="0dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y240"
         android:layout_marginBottom="@dimen/y10"
         android:layout_marginTop="@dimen/y10"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:elevation="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -2,6 +2,7 @@ package com.upcoding.buy.api;
 
 import retrofit2.http.GET;
 import rx.Observable;
+
 import com.upcoding.buy.bean.CommonGuestBean;
 import com.upcoding.buy.bean.InfoHomeBean;
 
@@ -10,7 +11,7 @@ import com.upcoding.buy.bean.InfoHomeBean;
  */
 
 public interface ServiceApi {
-    static final String ACTION_VERSION = "/v1";
+    String ACTION_VERSION = "/v1";
 
 
     //用户相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
@@ -54,8 +55,8 @@ public interface ServiceApi {
 
     //系统模块相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
     //获取app基本信息
-    static final String ACTION_COMMON_HOME = ACTION_VERSION + "/common/home";
-    static final String ACTION_COMMON_HOME_GUEST = "/boom/v1/common/home-guest";
+    String ACTION_COMMON_HOME = ACTION_VERSION + "/common/home";
+    String ACTION_COMMON_HOME_GUEST = "/boom/v1/common/home-guest";
     String ACTION_COMMON_MESSAGE = ACTION_VERSION + "/common/message";
     //系统模块相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
 
