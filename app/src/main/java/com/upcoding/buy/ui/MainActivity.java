@@ -20,14 +20,14 @@ public class MainActivity extends ToolbarActivity {
 
     @BindView(R.id.flyt_main_container)
     FrameLayout flytMainContainer;
-    @BindView(R.id.ib_main_recommend)
-    ImageButton ibMainRecommend;
-    @BindView(R.id.ib_main_post)
-    ImageButton ibMainPost;
-    @BindView(R.id.ib_main_msg)
-    ImageButton ibMainMsg;
-    @BindView(R.id.ib_main_my)
-    ImageButton ibMainMy;
+    //    @BindView(R.id.ib_main_recommend)
+//    ImageButton ibMainRecommend;
+//    @BindView(R.id.ib_main_post)
+//    ImageButton ibMainPost;
+//    @BindView(R.id.ib_main_msg)
+//    ImageButton ibMainMsg;
+//    @BindView(R.id.ib_main_my)
+//    ImageButton ibMainMy;
     @BindView(R.id.llyt_main_bottom)
     LinearLayout llytMainBottom;
     @BindView(R.id.activity_main)
@@ -45,7 +45,7 @@ public class MainActivity extends ToolbarActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initData();
-        initListener();
+//        initListener();
         initFragments();
     }
 
@@ -62,18 +62,11 @@ public class MainActivity extends ToolbarActivity {
         for (ImageButton imageButton : buttons) {
             imageButton.setOnClickListener((view) -> checkMenu(imageButton.getId()));
         }
-//        ibMainRecommend.performClick();
     }
 
     private void initData() {
-        buttons = new ImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
-        currentSelectMenuId = ibMainRecommend.getId();
-    }
-
-
-    private void refreshMenu(int id) {
-
-
+//        buttons = new ImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
+//        currentSelectMenuId = ibMainRecommend.getId();
     }
 
 
@@ -81,31 +74,20 @@ public class MainActivity extends ToolbarActivity {
         if (id == currentSelectMenuId) {
             return;
         }
-        switch (id) {
-            case R.id.ib_main_recommend:
-                ibMainRecommend.setImageResource(R.drawable.ic_account_balance_red_24dp);
-                break;
-            case R.id.ib_main_post:
-                break;
-            case R.id.ib_main_msg:
-                break;
-            case R.id.ib_main_my:
-                break;
-        }
 
+        currentSelectMenuId = id;
 
-        for (int i = 0; i < buttons.length; i++) {
+        for (ImageButton imageButton : buttons) {
+            if (imageButton.getId() == id) {
+                LogUtils.e("=========true", "=====true");
+                imageButton.setPressed(true);
+                imageButton.setFocusable(true);
+            } else {
+//                LogUtils.e("=========false", "=====false");
+                imageButton.setPressed(false);
+            }
 
         }
-
-
-//        for (ImageButton imageButton : buttons) {
-//            if (imageButton.getTag().equals(tag)) {
-//                imageButton.setImageResource(R.drawable.ic_account_balance_red_24dp);
-//            } else {
-//                imageButton.setImageResource(R.drawable.ic_account_balance_gray_24dp);
-//            }
-//        }
     }
 
 

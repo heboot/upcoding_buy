@@ -28,20 +28,22 @@
             android:layout_weight="1"
             android:background="?android:selectableItemBackground"
             android:button="@null"
+            android:clickable="true"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/ic_account_balance_gray_24dp"
+            android:src="@drawable/test"
             android:tag="@string/main_bottom_menu_recommend" />
 
-        <ImageButton
+        <Button
             android:id="@+id/ib_main_post"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="?android:selectableItemBackground"
+            android:background="@drawable/test"
+            android:clickable="true"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/ic_account_balance_gray_24dp"
+            android:src="@drawable/test"
             android:tag="@string/tag_main_bottom_menu_post" />
 
         <ImageButton
@@ -49,11 +51,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="?android:selectableItemBackground"
-            android:button="@null"
+            android:background="@drawable/test"
+            android:clickable="true"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/ic_account_balance_gray_24dp"
             android:tag="@string/tag_main_bottom_menu_msg" />
 
         <ImageButton
@@ -63,9 +64,10 @@
             android:layout_weight="1"
             android:background="?android:selectableItemBackground"
             android:button="@null"
+            android:clickable="true"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/ic_account_balance_gray_24dp"
+            android:src="@drawable/test"
             android:tag="@string/tag_main_bottom_menu_my" />
     </LinearLayout>
 
