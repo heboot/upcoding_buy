@@ -2,6 +2,7 @@ package com.upcoding.buy.ui.recommend;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.upcoding.buy.R;
 import com.upcoding.buy.common.ContentKey;

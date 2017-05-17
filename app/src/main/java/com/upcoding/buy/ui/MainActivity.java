@@ -5,8 +5,8 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.support.v7.widget.AppCompatImageButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,20 +20,20 @@ public class MainActivity extends ToolbarActivity {
 
     @BindView(R.id.flyt_main_container)
     FrameLayout flytMainContainer;
-    //    @BindView(R.id.ib_main_recommend)
-//    ImageButton ibMainRecommend;
-//    @BindView(R.id.ib_main_post)
-//    ImageButton ibMainPost;
-//    @BindView(R.id.ib_main_msg)
-//    ImageButton ibMainMsg;
-//    @BindView(R.id.ib_main_my)
-//    ImageButton ibMainMy;
+    @BindView(R.id.ib_main_recommend)
+    AppCompatImageButton ibMainRecommend;
+    @BindView(R.id.ib_main_post)
+    AppCompatImageButton ibMainPost;
+    @BindView(R.id.ib_main_msg)
+    AppCompatImageButton ibMainMsg;
+    @BindView(R.id.ib_main_my)
+    AppCompatImageButton ibMainMy;
     @BindView(R.id.llyt_main_bottom)
     LinearLayout llytMainBottom;
     @BindView(R.id.activity_main)
     ConstraintLayout activityMain;
 
-    private ImageButton[] buttons;
+    private AppCompatImageButton[] buttons;
 
     private RecommentFragment recommentFragment;
 
@@ -45,7 +45,7 @@ public class MainActivity extends ToolbarActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initData();
-//        initListener();
+        initListener();
         initFragments();
     }
 
@@ -59,14 +59,15 @@ public class MainActivity extends ToolbarActivity {
     }
 
     private void initListener() {
-        for (ImageButton imageButton : buttons) {
+        for (AppCompatImageButton imageButton : buttons) {
             imageButton.setOnClickListener((view) -> checkMenu(imageButton.getId()));
         }
     }
 
     private void initData() {
-//        buttons = new ImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
-//        currentSelectMenuId = ibMainRecommend.getId();
+        buttons = new AppCompatImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
+        currentSelectMenuId = ibMainRecommend.getId();
+        ibMainRecommend.setSelected(true);
     }
 
 
@@ -77,14 +78,11 @@ public class MainActivity extends ToolbarActivity {
 
         currentSelectMenuId = id;
 
-        for (ImageButton imageButton : buttons) {
+        for (AppCompatImageButton imageButton : buttons) {
             if (imageButton.getId() == id) {
-                LogUtils.e("=========true", "=====true");
-                imageButton.setPressed(true);
-                imageButton.setFocusable(true);
+                imageButton.setSelected(true);
             } else {
-//                LogUtils.e("=========false", "=====false");
-                imageButton.setPressed(false);
+                imageButton.setSelected(false);
             }
 
         }

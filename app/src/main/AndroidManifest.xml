@@ -34,6 +34,7 @@
         </activity>
 
         <activity
+
             android:name=".ui.recommend.RecommentDetailActivity"
             android:transitionName="shareTransition"
             android:theme="@style/AppTheme.NoActionBarT" />

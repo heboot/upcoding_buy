@@ -21,7 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
 
-        <ImageButton
+        <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/ib_main_recommend"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -31,33 +31,34 @@
             android:clickable="true"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/test"
+            android:src="@drawable/bg_main_menu"
             android:tag="@string/main_bottom_menu_recommend" />
 
-        <Button
+        <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/ib_main_post"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/test"
+            android:background="?android:selectableItemBackground"
             android:clickable="true"
+            android:enabled="true"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/test"
+            android:src="@drawable/bg_main_menu"
             android:tag="@string/tag_main_bottom_menu_post" />
 
-        <ImageButton
+        <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/ib_main_msg"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/test"
-            android:clickable="true"
+            android:background="?android:selectableItemBackground"
             android:gravity="center"
             android:padding="16dp"
+            android:src="@drawable/bg_main_menu"
             android:tag="@string/tag_main_bottom_menu_msg" />
 
-        <ImageButton
+        <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/ib_main_my"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -67,7 +68,7 @@
             android:clickable="true"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/test"
+            android:src="@drawable/bg_main_menu"
             android:tag="@string/tag_main_bottom_menu_my" />
     </LinearLayout>
 
