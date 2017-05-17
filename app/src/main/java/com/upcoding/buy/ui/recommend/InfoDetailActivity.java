@@ -18,6 +18,7 @@ import com.upcoding.buy.ui.ToolbarActivity;
 
 public class InfoDetailActivity extends ToolbarActivity {
 
+    //test vpn
     private InfoModel infoModel;
 
     private View toolBarView;
