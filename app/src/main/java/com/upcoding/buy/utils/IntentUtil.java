@@ -2,13 +2,12 @@ package com.upcoding.buy.utils;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
 import com.upcoding.buy.common.ContentKey;
 import com.upcoding.buy.model.InfoModel;
-import com.upcoding.buy.ui.recommend.RecommentDetailActivity;
+import com.upcoding.buy.ui.recommend.InfoDetailActivity;
 
 /**
  * Created by Heboot on 2017/5/3.
@@ -17,7 +16,7 @@ import com.upcoding.buy.ui.recommend.RecommentDetailActivity;
 public class IntentUtil {
     public static void intent2InfoDetailActivity(Activity context, InfoModel infoModel, View v) {
 //        InfoService.getInstance().read(infoModel.getInfoId());
-        Intent intent = new Intent(context.getApplicationContext(), RecommentDetailActivity.class);
+        Intent intent = new Intent(context.getApplicationContext(), InfoDetailActivity.class);
         intent.putExtra(ContentKey.INFO_MODEL, infoModel);
 //        context.startActivity(intent);
 

@@ -12,8 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import com.upcoding.buy.R;
-import com.upcoding.buy.ui.recommend.RecommentFragment;
-import com.upcoding.buy.utils.LogUtils;
+import com.upcoding.buy.ui.recommend.InfoFragment;
 
 public class MainActivity extends ToolbarActivity {
 
@@ -35,7 +34,7 @@ public class MainActivity extends ToolbarActivity {
 
     private AppCompatImageButton[] buttons;
 
-    private RecommentFragment recommentFragment;
+    private InfoFragment infoFragment;
 
     private int currentSelectMenuId = -1;
 
@@ -50,12 +49,12 @@ public class MainActivity extends ToolbarActivity {
     }
 
     private void initFragments() {
-        recommentFragment = new RecommentFragment();
+        infoFragment = new InfoFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(flytMainContainer.getId(), recommentFragment);
+        fragmentTransaction.add(flytMainContainer.getId(), infoFragment);
         fragmentTransaction.commit();
-        fragmentTransaction.show(recommentFragment);
+        fragmentTransaction.show(infoFragment);
     }
 
     private void initListener() {

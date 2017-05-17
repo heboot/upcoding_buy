@@ -28,7 +28,7 @@ import rx.schedulers.Schedulers;
  * Created by Heboot on 2017/4/26.
  */
 
-public class RecommentFragment extends Fragment {
+public class InfoFragment extends Fragment {
     protected String TAG = this.getClass().getName();
     RecommendBind bind;
     @BindView(R.id.rv_recommend)

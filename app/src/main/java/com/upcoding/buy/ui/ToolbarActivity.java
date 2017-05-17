@@ -23,7 +23,9 @@ public class ToolbarActivity extends AppCompatActivity {
     protected String TAG = this.getClass().getName();
 
     private Toolbar toolbar;
-//    private ImageButton ibToolBarTitle;
+    private ImageButton ibToolBarSend;
+    private TextView tvToolBarTitle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +39,33 @@ public class ToolbarActivity extends AppCompatActivity {
 ////            localLayoutParams.flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
 //        }
 
+        initToolbar();
+
+//
+//
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        if (toolbar != null) {
+//            setSupportActionBar(toolbar);
+//        }
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(true);
+    }
 
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
+    /**
+     * 显示ToolBar
+     */
+    protected void showToolBar(String title, boolean displayHomeAsUpEnabled, Integer homeAsUpResId) {
+        setToolBarTitle(title);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        if (displayHomeAsUpEnabled) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            if (homeAsUpResId != null) {
+                getSupportActionBar().setHomeAsUpIndicator(homeAsUpResId);
+            }
+        } else {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
 
@@ -52,18 +73,20 @@ public class ToolbarActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
+            tvToolBarTitle = (TextView) toolbar.findViewById(R.id.tv_toolbar_title);
+            ibToolBarSend = (ImageButton) toolbar.findViewById(R.id.tv_toolbar_send);
         }
     }
 
     protected void setToolBarTitle(String title) {
-//        if (tvToolbarTitle != null) {
-//            tvToolbarTitle.setText(title);
-//        }
+        if (tvToolBarTitle != null) {
+            tvToolBarTitle.setText(title);
+        }
     }
 
     protected void showToolBarSend(View.OnClickListener listener) {
-//        tvToolbarSend.setVisibility(View.VISIBLE);
-//        tvToolbarSend.setOnClickListener(listener);
+        ibToolBarSend.setVisibility(View.VISIBLE);
+        ibToolBarSend.setOnClickListener(listener);
     }
 
 

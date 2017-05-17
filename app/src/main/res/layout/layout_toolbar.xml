@@ -4,15 +4,21 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/gray"
     android:minHeight="?attr/actionBarSize"
     app:layout_collapseMode="pin"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:paddingTop="35dp">
+        android:layout_height="65dp"
+        android:paddingTop="28dp">
 
         <ImageButton
             android:id="@+id/ib_toolbar_back"
@@ -20,8 +26,7 @@
             android:layout_height="match_parent"
             android:background="?android:selectableItemBackground"
             android:gravity="right|center_vertical"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:visibility="gone" />
+            android:src="@drawable/ic_arrow_back_black_24dp" />
 
         <TextView
             android:id="@+id/tv_toolbar_title"
@@ -30,6 +35,8 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center|left"
             android:gravity="center"
+            android:maxEms="10"
+            android:maxLines="1"
             android:text="sdagasdg"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
@@ -42,7 +49,8 @@
             android:background="?android:selectableItemBackground"
             android:gravity="left|center_vertical"
             android:paddingRight="@dimen/x36"
-            android:src="@drawable/ic_send_black_24dp" />
+            android:src="@drawable/ic_send_black_24dp"
+            android:visibility="gone" />
     </RelativeLayout>
 
 

@@ -35,9 +35,9 @@
 
         <activity
 
-            android:name=".ui.recommend.RecommentDetailActivity"
-            android:transitionName="shareTransition"
-            android:theme="@style/AppTheme.NoActionBarT" />
+            android:name=".ui.recommend.InfoDetailActivity"
+            android:theme="@style/AppTheme.NoActionBarT"
+            android:transitionName="shareTransition" />
 
     </application>
 

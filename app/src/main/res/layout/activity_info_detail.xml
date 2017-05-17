@@ -29,8 +29,8 @@
                 <android.support.design.widget.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:contentScrim="#00000000"
-                    app:layout_scrollFlags="scroll|enterAlways">
+                    app:contentScrim="@color/colorPrimary"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
                     <ImageView
@@ -39,9 +39,13 @@
                         android:background="@color/gray"
                         android:fitsSystemWindows="true"
                         android:scaleType="fitXY"
-                        android:showImg="@{infoModel.bigImgUrl}" />
+                        android:showImg="@{infoModel.bigImgUrl}"
+                        app:layout_collapseMode="parallax"
+                        app:layout_collapseParallaxMultiplier="0.9" />
 
-                    <include layout="@layout/layout_toolbar"></include>
+                    <include
+                        android:id="@+id/include_toolbar"
+                        layout="@layout/layout_toolbar"></include>
                     <!--<android.support.v7.widget.Toolbar-->
                     <!--android:layout_width="match_parent"-->
                     <!--android:layout_height="70dp"-->
@@ -117,7 +121,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:background="@color/colorPrimary"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -126,21 +130,21 @@
 
             <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/ic_thumb_up_white_24dp" />
 
             <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_comment_white_24dp" />
 
             <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/ic_launch_white_24dp" />
@@ -148,7 +152,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
                 android:text="直达链接"
