@@ -38,8 +38,8 @@ public class PostAdapter extends BaseRecyclerViewAdapter<PostModel> {
         }
 
         @Override
-        public void onBindViewHolder(final PostModel infoModel, int position) {
-//            binding.set(infoModel);
+        public void onBindViewHolder(final PostModel postModel, int position) {
+            binding.setPostModel(postModel);
 //            binding.getRoot().setOnClickListener((view) -> IntentUtil.intent2InfoDetailActivity(activity, infoModel, view));
         }
     }

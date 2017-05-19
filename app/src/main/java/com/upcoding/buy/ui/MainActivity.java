@@ -92,10 +92,10 @@ public class MainActivity extends ToolbarActivity {
 
         switch (id) {
             case R.id.ib_main_recommend:
-                fragmentTransaction.show(infoFragment).hide(postFragment);
+                getSupportFragmentManager().beginTransaction().show(infoFragment).hide(postFragment).commit();
                 break;
             case R.id.ib_main_post:
-                fragmentTransaction.show(postFragment).hide(infoFragment);
+                getSupportFragmentManager().beginTransaction().show(postFragment).hide(infoFragment).commit();
                 break;
             case R.id.ib_main_msg:
                 break;
@@ -103,7 +103,7 @@ public class MainActivity extends ToolbarActivity {
                 break;
         }
 
-        getSupportFragmentManager().beginTransaction().commit();
+//        getSupportFragmentManager().beginTransaction().commit();
 
     }
 
