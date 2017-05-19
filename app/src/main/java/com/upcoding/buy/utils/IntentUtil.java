@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.upcoding.buy.common.ContentKey;
 import com.upcoding.buy.model.InfoModel;
-import com.upcoding.buy.ui.recommend.InfoDetailActivity;
+import com.upcoding.buy.ui.info.InfoDetailActivity;
 
 /**
  * Created by Heboot on 2017/5/3.

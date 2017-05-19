@@ -5,13 +5,14 @@ import rx.Observable;
 
 import com.upcoding.buy.bean.CommonGuestBean;
 import com.upcoding.buy.bean.InfoHomeBean;
+import com.upcoding.buy.bean.PostHomeBean;
 
 /**
  * Created by Heboot on 2017/4/26.
  */
 
 public interface ServiceApi {
-    String ACTION_VERSION = "/v1";
+    String ACTION_VERSION = "boom/v1";
 
 
     //用户相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
@@ -30,7 +31,7 @@ public interface ServiceApi {
 
     //优惠信息相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
     //获取文章首页列表数据
-    String ACTION_INFO_HOME = "boom/" + ACTION_VERSION + "/info/home";
+    String ACTION_INFO_HOME = ACTION_VERSION + "/info/home";
     String ACTION_INFO_EVA = ACTION_VERSION + "/info/eva";
     String ACTION_INFO_COMMENT = ACTION_VERSION + "/info/comment";
     String ACTION_INFO_INFO = ACTION_VERSION + "/info/info";
@@ -56,7 +57,7 @@ public interface ServiceApi {
     //系统模块相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
     //获取app基本信息
     String ACTION_COMMON_HOME = ACTION_VERSION + "/common/home";
-    String ACTION_COMMON_HOME_GUEST = "/boom/v1/common/home-guest";
+    String ACTION_COMMON_HOME_GUEST = ACTION_VERSION + "/common/home-guest";
     String ACTION_COMMON_MESSAGE = ACTION_VERSION + "/common/message";
     //系统模块相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
 
@@ -86,9 +87,15 @@ public interface ServiceApi {
     String PARAM_MESSAGE_SYSTEM_CREATE_TIME = "systemMessageCreateTime";
     String PARAM_IS_HOT = "isHot";
 
+    //优惠信息相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
     @GET(ACTION_INFO_HOME)
     Observable<InfoHomeBean> infoHome();
+    //优惠信息相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
 
+    //帖子相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
+    @GET(ACTION_POST_HOME)
+    Observable<PostHomeBean> postHome();
+    //帖子相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
 
     @GET(ACTION_COMMON_HOME_GUEST)
     Observable<CommonGuestBean> homeGuest();

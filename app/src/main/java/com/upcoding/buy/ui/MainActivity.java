@@ -12,7 +12,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import com.upcoding.buy.R;
-import com.upcoding.buy.ui.recommend.InfoFragment;
+import com.upcoding.buy.ui.info.InfoFragment;
+import com.upcoding.buy.ui.post.PostFragment;
 
 public class MainActivity extends ToolbarActivity {
 
@@ -35,6 +36,8 @@ public class MainActivity extends ToolbarActivity {
     private AppCompatImageButton[] buttons;
 
     private InfoFragment infoFragment;
+    private PostFragment postFragment;
+    private FragmentTransaction fragmentTransaction;
 
     private int currentSelectMenuId = -1;
 
@@ -50,11 +53,13 @@ public class MainActivity extends ToolbarActivity {
 
     private void initFragments() {
         infoFragment = new InfoFragment();
+        postFragment = new PostFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(flytMainContainer.getId(), infoFragment);
+        fragmentTransaction.add(flytMainContainer.getId(), postFragment);
+        fragmentTransaction.show(infoFragment).hide(postFragment);
         fragmentTransaction.commit();
-        fragmentTransaction.show(infoFragment);
     }
 
     private void initListener() {
@@ -83,8 +88,23 @@ public class MainActivity extends ToolbarActivity {
             } else {
                 imageButton.setSelected(false);
             }
-
         }
+
+        switch (id) {
+            case R.id.ib_main_recommend:
+                fragmentTransaction.show(infoFragment).hide(postFragment);
+                break;
+            case R.id.ib_main_post:
+                fragmentTransaction.show(postFragment).hide(infoFragment);
+                break;
+            case R.id.ib_main_msg:
+                break;
+            case R.id.ib_main_my:
+                break;
+        }
+
+        getSupportFragmentManager().beginTransaction().commit();
+
     }
 
 
