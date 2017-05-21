@@ -40,7 +40,7 @@ public class InfoAdapter extends BaseRecyclerViewAdapter<InfoModel> {
         @Override
         public void onBindViewHolder(final InfoModel infoModel, int position) {
             binding.setInfoModel(infoModel);
-            binding.getRoot().setOnClickListener((view) -> IntentUtil.intent2InfoDetailActivity(activity, infoModel, view));
+            binding.getRoot().setOnClickListener((view) -> IntentUtil.intent2ContentDetailActivity(activity, infoModel, view));
         }
     }
 

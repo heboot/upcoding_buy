@@ -10,6 +10,7 @@ import com.upcoding.buy.bean.PostHomeBean;
 import com.upcoding.buy.databinding.ItemHomeInfoBind;
 import com.upcoding.buy.databinding.ItemHomePostBind;
 import com.upcoding.buy.model.PostModel;
+import com.upcoding.buy.utils.IntentUtil;
 
 /**
  * Created by Heboot on 2017/4/26.
@@ -40,7 +41,7 @@ public class PostAdapter extends BaseRecyclerViewAdapter<PostModel> {
         @Override
         public void onBindViewHolder(final PostModel postModel, int position) {
             binding.setPostModel(postModel);
-//            binding.getRoot().setOnClickListener((view) -> IntentUtil.intent2InfoDetailActivity(activity, infoModel, view));
+            binding.getRoot().setOnClickListener((view) -> IntentUtil.intent2ContentDetailActivity(activity, postModel, view));
         }
     }
 

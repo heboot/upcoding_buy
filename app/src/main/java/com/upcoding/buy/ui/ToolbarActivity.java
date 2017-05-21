@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
  * Created by Heboot on 2017/1/11.
  */
 
-public class ToolbarActivity extends AppCompatActivity {
+public abstract class ToolbarActivity extends AppCompatActivity {
 
     protected String TAG = this.getClass().getName();
 
@@ -51,6 +51,7 @@ public class ToolbarActivity extends AppCompatActivity {
 //        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
+    protected abstract void initData();
 
     /**
      * 显示ToolBar

@@ -15,6 +15,9 @@ public class ConstantValue {
     public static final int POST_TYPE_CEPING = 0;
     public static final int POST_TYPE_ZHUANGBI = 2;
 
+    public static final int CONTENT_TYPE_INFO = 1;
+    public static final int CONTENT_TYPE_POST = 2;
+
 
     public static final String QINIU_BUCKETNAME_HEAD = "head";
     public static final String QINIU_BUCKETNAME_POST = "post";

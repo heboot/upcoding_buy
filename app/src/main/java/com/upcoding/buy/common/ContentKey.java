@@ -12,10 +12,12 @@ public class ContentKey {
     public static final String PAGEJUMP_COMMENT = "pageJumpComment";
     public static final String PAGEJUMP_COMMENT_INFO = "pageJumpCommentInfo";
     public static final String PAGEJUMP_COMMENT_POST = "pageJumpCommentPost";
+    public static final String PAGEJUMP_CONTENT_TYPE = "contentType";
     public static final String IMAGE_PATH = "imagePath";
     public static final String HTML_URL = "htmlUrl";
     public static final String SEARCH_TYPE = "searchType";
     public static final String CROP_TYPE = "cropType";
     public static final String HTML_FROM = "htmlFrom";
+
 
 }

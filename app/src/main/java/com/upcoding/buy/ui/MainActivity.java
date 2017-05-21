@@ -68,7 +68,7 @@ public class MainActivity extends ToolbarActivity {
         }
     }
 
-    private void initData() {
+    protected void initData() {
         buttons = new AppCompatImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
         currentSelectMenuId = ibMainRecommend.getId();
         ibMainRecommend.setSelected(true);

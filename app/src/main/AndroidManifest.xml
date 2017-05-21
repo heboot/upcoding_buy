@@ -35,7 +35,7 @@
 
         <activity
 
-            android:name=".ui.info.InfoDetailActivity"
+            android:name=".ui.info.ContentDetailActivity"
             android:theme="@style/AppTheme.NoActionBarT"
             android:transitionName="shareTransition" />
 
