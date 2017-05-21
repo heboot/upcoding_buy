@@ -44,7 +44,7 @@
             android:enabled="true"
             android:gravity="center"
             android:padding="16dp"
-            android:src="@drawable/bg_main_menu"
+            android:src="@drawable/bg_main_menu_post"
             android:tag="@string/tag_main_bottom_menu_post" />
 
         <android.support.v7.widget.AppCompatImageButton

@@ -6,6 +6,7 @@ import com.upcoding.buy.MyApplication;
 import com.upcoding.buy.common.SharePrefKey;
 import com.upcoding.buy.model.UserModel;
 import com.upcoding.buy.utils.DateUtil;
+import com.upcoding.buy.utils.IntentUtil;
 import com.upcoding.buy.utils.LogUtils;
 import com.upcoding.buy.utils.SharePrefUtil;
 
@@ -26,9 +27,15 @@ public class UserService extends HttpService {
     }
 
 
-    public boolean isLogin() {
+    public boolean isLogin(Context context) {
+        if (isLogin) {
+            return isLogin;
+        } else {
+            IntentUtil.intent2LoginActivity(context);
+        }
         return isLogin;
     }
+
 
     public void setIsLogin(boolean loginStatus, UserModel userModel) {
         this.isLogin = loginStatus;

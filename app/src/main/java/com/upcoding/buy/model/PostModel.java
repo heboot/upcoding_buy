@@ -1,5 +1,9 @@
 package com.upcoding.buy.model;
 
+import android.view.View;
+
+import com.upcoding.buy.utils.LogUtils;
+
 import java.io.Serializable;
 
 /**
@@ -168,5 +172,9 @@ public class PostModel extends BaseModel implements Serializable {
 
     public void setFav(boolean fav) {
         this.fav = fav;
+    }
+
+    public void doEva(View view) {
+        LogUtils.e("======eva","========eva post");
     }
 }

@@ -10,7 +10,6 @@ import com.upcoding.buy.R;
 import com.upcoding.buy.common.ConstantValue;
 import com.upcoding.buy.common.ContentKey;
 import com.upcoding.buy.databinding.ContentDetailBind;
-import com.upcoding.buy.databinding.InfoDetailBind;
 import com.upcoding.buy.model.InfoModel;
 import com.upcoding.buy.model.PostModel;
 import com.upcoding.buy.ui.ToolbarActivity;

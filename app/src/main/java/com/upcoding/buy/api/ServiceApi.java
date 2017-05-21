@@ -1,11 +1,13 @@
 package com.upcoding.buy.api;
 
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import rx.Observable;
 
 import com.upcoding.buy.bean.CommonGuestBean;
 import com.upcoding.buy.bean.InfoHomeBean;
 import com.upcoding.buy.bean.PostHomeBean;
+import com.upcoding.buy.model.BaseModel;
 
 /**
  * Created by Heboot on 2017/4/26.
@@ -90,6 +92,9 @@ public interface ServiceApi {
     //优惠信息相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
     @GET(ACTION_INFO_HOME)
     Observable<InfoHomeBean> infoHome();
+
+    @POST(ACTION_INFO_EVA)
+    Observable<BaseModel> infoEva();
     //优惠信息相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
 
     //帖子相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start

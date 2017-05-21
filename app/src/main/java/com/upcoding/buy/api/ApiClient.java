@@ -31,6 +31,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 import com.upcoding.buy.BuildConfig;
 import com.upcoding.buy.MyApplication;
 import com.upcoding.buy.model.UserModel;
@@ -173,15 +174,15 @@ public class ApiClient {
                         "x-codingfeel-terminal:" + "android\n" +
                         "x-codingfeel-version:" + MyApplication.getInstance().getVersion();
 
+        headers = new Headers.Builder()
+                .add("x-codingfeel-terminal", "android")
+                .add("x-codingfeel-version", MyApplication.getInstance().getVersion())
+                .add("Charset", "utf-8")
+                .add("x-codingfeel-time", time)
+                .build();
+        builder.headers(headers);
 
         if (request.isGuide()) {
-            headers = new Headers.Builder()
-                    .add("x-codingfeel-terminal", "android")
-                    .add("x-codingfeel-version", MyApplication.getInstance().getVersion())
-                    .add("Charset", "utf-8")
-                    .add("x-codingfeel-time", time)
-                    .build();
-            builder.headers(headers);
             return;
         }
 

@@ -4,12 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import rx.Observable;
+
 import com.upcoding.buy.BuildConfig;
 import com.upcoding.buy.api.ApiClient;
 import com.upcoding.buy.api.ApiRequest;
 import com.upcoding.buy.api.RxHelper;
 import com.upcoding.buy.bean.InfoHomeBean;
+import com.upcoding.buy.model.BaseModel;
 import com.upcoding.buy.model.InfoModel;
+import com.upcoding.buy.utils.LogUtils;
 
 /**
  * Created by Heboot on 16/7/10.
@@ -82,7 +85,7 @@ public class InfoService extends HttpService {
         return RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).infoHome());
     }
 
-//    public void detail(String infoId) {
+    //    public void detail(String infoId) {
 //        HttpRequest httpRequest = new HttpRequest(BuildConfig.HTTP_SERVER + ACTION_INFO_DETAIL, HttpRequest.Method.GET, true);
 //        httpRequest.addParams(PARAM_INFOID, infoId);
 //        httpRequest.addParams(PARAM_APP, "1");
@@ -108,27 +111,12 @@ public class InfoService extends HttpService {
 //    }
 //
 //
-//    public void eva(String infoId) {
-//        HttpRequest httpRequest = new HttpRequest(BuildConfig.HTTP_SERVER + ACTION_INFO_EVA, HttpRequest.Method.POST, false);
-//        httpRequest.addParams(PARAM_INFOID, infoId);
-//
-//        FormBody formBody = new FormBody.Builder()
-//                .add(PARAM_INFOID, infoId)
-//                .build();
-//        httpRequest.setFormBody(formBody);
-//
-//        HttpUtils.getInstance().execute(httpRequest, new HttpResponse() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//            }
-//
-//            @Override
-//            public void onResponse(String result) {
-//                BaseModel baseModel = JSON.parseObject(result, BaseModel.class);
-//                EventBus.getDefault().post(new BaseEvent.BasicEvent(baseModel, BasicEventEnum.INFO_EVA));
-//            }
-//        });
-//    }
+    public Observable<BaseModel> eva(String infoId) {
+        ApiRequest httpRequest = new ApiRequest(BuildConfig.HTTP_SERVER + ACTION_INFO_EVA, ApiRequest.Method.POST, false);
+        httpRequest.addParams(PARAM_INFOID, infoId);
+        LogUtils.e(">>>url", httpRequest.getHttpUrl() + "method" + httpRequest.getMethod());
+        return RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).infoEva());
+    }
 //
 //    public void read(String infoId) {
 //        HttpRequest httpRequest = new HttpRequest(BuildConfig.HTTP_SERVER + ACTION_INFO_READ, HttpRequest.Method.POST, true);

@@ -1,6 +1,17 @@
 package com.upcoding.buy.model;
 
+import android.databinding.Bindable;
+import android.view.View;
+
+import com.upcoding.buy.BR;
+import com.upcoding.buy.service.InfoService;
+import com.upcoding.buy.utils.LogUtils;
+
 import java.io.Serializable;
+
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Heboot on 16/7/10.
@@ -181,11 +192,35 @@ public class InfoModel extends BaseModel implements Serializable {
         this.nickName = nickName;
     }
 
+    @Bindable
     public boolean isEva() {
         return eva;
     }
 
     public void setEva(boolean eva) {
         this.eva = eva;
+        notifyPropertyChanged(BR.eva);
+    }
+
+    public void doEva(View view) {
+
+        LogUtils.e("======eva", "========eva info");
+        setEva(true);
+        InfoService.getInstance().eva(infoId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<BaseModel>() {
+            @Override
+            public void onCompleted() {
+                LogUtils.e("======eva", "========eva info onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                LogUtils.e("======eva", "========eva info onError");
+            }
+
+            @Override
+            public void onNext(BaseModel baseModel) {
+                LogUtils.e("======eva", "========eva infZo onNext");
+            }
+        });
     }
 }
