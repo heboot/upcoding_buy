@@ -12,6 +12,7 @@ import com.upcoding.buy.common.ContentKey;
 import com.upcoding.buy.model.InfoModel;
 import com.upcoding.buy.model.PostModel;
 import com.upcoding.buy.ui.info.ContentDetailActivity;
+import com.upcoding.buy.ui.user.LoginActivity;
 
 /**
  * Created by Heboot on 2017/5/3.
@@ -36,7 +37,7 @@ public class IntentUtil {
     }
 
     public static void intent2LoginActivity(Context context) {
-        Intent intent = new Intent(context.getApplicationContext(), ContentDetailActivity.class);
-        //将原先的跳转改成如下方式，注意这里面的第三个参数决定了ActivityTwo 布局中的android:transitionName的值，它们要保持一致
+        Intent intent = new Intent(context.getApplicationContext(), LoginActivity.class);
+        context.startActivity(intent);
     }
 }

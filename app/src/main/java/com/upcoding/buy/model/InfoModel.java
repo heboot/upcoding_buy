@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.upcoding.buy.BR;
 import com.upcoding.buy.service.InfoService;
+import com.upcoding.buy.service.UserService;
 import com.upcoding.buy.utils.LogUtils;
 
 import java.io.Serializable;
@@ -203,8 +204,9 @@ public class InfoModel extends BaseModel implements Serializable {
     }
 
     public void doEva(View view) {
-
-        LogUtils.e("======eva", "========eva info");
+        if (!UserService.getInstance().isLogin(view.getContext())) {
+            return;
+        }
         setEva(true);
         InfoService.getInstance().eva(infoId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<BaseModel>() {
             @Override

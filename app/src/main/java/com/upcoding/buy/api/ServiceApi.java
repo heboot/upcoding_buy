@@ -8,6 +8,7 @@ import com.upcoding.buy.bean.CommonGuestBean;
 import com.upcoding.buy.bean.InfoHomeBean;
 import com.upcoding.buy.bean.PostHomeBean;
 import com.upcoding.buy.model.BaseModel;
+import com.upcoding.buy.model.UserModel;
 
 /**
  * Created by Heboot on 2017/4/26.
@@ -100,6 +101,14 @@ public interface ServiceApi {
     //帖子相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
     @GET(ACTION_POST_HOME)
     Observable<PostHomeBean> postHome();
+    //帖子相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
+
+    //用户相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓start
+    @POST(ACTION_USER_LOGIN)
+    Observable<UserModel> login();
+
+    @POST(ACTION_USER_REGISTER)
+    Observable<UserModel> register();
     //帖子相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑end
 
     @GET(ACTION_COMMON_HOME_GUEST)

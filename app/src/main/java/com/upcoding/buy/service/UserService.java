@@ -2,13 +2,24 @@ package com.upcoding.buy.service;
 
 import android.content.Context;
 
+import com.upcoding.buy.BuildConfig;
 import com.upcoding.buy.MyApplication;
+import com.upcoding.buy.api.ApiClient;
+import com.upcoding.buy.api.ApiRequest;
+import com.upcoding.buy.api.RxHelper;
 import com.upcoding.buy.common.SharePrefKey;
 import com.upcoding.buy.model.UserModel;
 import com.upcoding.buy.utils.DateUtil;
+import com.upcoding.buy.utils.EncryptUtils;
 import com.upcoding.buy.utils.IntentUtil;
 import com.upcoding.buy.utils.LogUtils;
+import com.upcoding.buy.utils.MiscUtils;
 import com.upcoding.buy.utils.SharePrefUtil;
+
+import org.stringtemplate.v4.misc.Misc;
+
+import okhttp3.FormBody;
+import rx.Observable;
 
 /**
  * Created by Heboot on 16/6/24.
@@ -60,10 +71,10 @@ public class UserService extends HttpService {
         LogUtils.e("===========", "===========autoLogin");
         if (sharePreUserModel != null) {
             LogUtils.e("===========", "===========autoLogin2");
-//            login(sharePreUserModel.getNickName(), EncryptUtils.md5(sharePreUserModel.getNickName() + MiscUtils.getIMEI(context)), MiscUtils.getIMEI(context), "22233");
+            login(sharePreUserModel.getNickName(), EncryptUtils.md5(sharePreUserModel.getNickName() + MiscUtils.getIMEI(context)), MiscUtils.getIMEI(context), "22233");
         } else {
             String loginName = getLoginName();
-//            register(loginName, EncryptUtils.md5(loginName + MiscUtils.getIMEI(context)), MiscUtils.getIMEI(context), "22233");
+            register(loginName, EncryptUtils.md5(loginName + MiscUtils.getIMEI(context)), MiscUtils.getIMEI(context), "22233");
         }
     }
 
@@ -82,78 +93,26 @@ public class UserService extends HttpService {
     }
 
 
-//    public void register(String loginName, String password, String deviceId, String clientId) {
-//        HttpRequest httpRequest = new HttpRequest(BuildConfig.HTTP_SERVER + ACTION_USER_REGISTER, HttpRequest.Method.POST, true);
-//        httpRequest.addParams(PARAM_LOGINNAME, loginName);
-//        httpRequest.addParams(PARAM_PASSWORD, password);
-//        httpRequest.addParams(PARAM_DEVICE_ID, deviceId);
-//        httpRequest.addParams(PARAM_CLIENT_ID, clientId == null ? "" : clientId);
+    public Observable<UserModel> register(String loginName, String password, String deviceId, String clientId) {
+        ApiRequest httpRequest = new ApiRequest(BuildConfig.HTTP_SERVER + ACTION_USER_REGISTER, ApiRequest.Method.POST, true);
+        httpRequest.addParams(PARAM_LOGINNAME, loginName);
+        httpRequest.addParams(PARAM_PASSWORD, password);
+        httpRequest.addParams(PARAM_DEVICE_ID, deviceId);
+        httpRequest.addParams(PARAM_CLIENT_ID, clientId == null ? "" : clientId);
+        return RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).register());
+    }
+
+    //
 //
-//        FormBody formBody = new FormBody.Builder()
-//                .add(PARAM_LOGINNAME, loginName)
-//                .add(PARAM_PASSWORD, password)
-//                .add(PARAM_DEVICE_ID, deviceId)
-//                .add(PARAM_WX_UNIONID, deviceId)
-//                .add(PARAM_CLIENT_ID, clientId == null ? "" : clientId)
-//                .build();
-//        httpRequest.setFormBody(formBody);
-//
-//        HttpUtils.getInstance().execute(httpRequest, new HttpResponse() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//            }
-//
-//            @Override
-//            public void onResponse(String result) {
-//                UserModel userModel = JSON.parseObject(result, UserModel.class);
-//                if (!ValidateUtil.hasError(userModel)) {
-//                    LogUtils.e("userservice", "login suc save user to local");
-//                    UserService.getInstance().setIsLogin(true, userModel);
-//                    SharePrefUtil.saveObj(MyApplication.getInstance(), SharePrefKey.PREFERENCES_USER_MODEL, userModel);
-//                }
-//                CommonService.getInstance().home();
-//                CommonService.getInstance().getMessage();
-//                EventBus.getDefault().post(new UserEvent.UserLoginEvent(userModel));
-//            }
-//        });
-//    }
-//
-//
-//    public void login(String loginName, String password, String deviceId, String clientId) {
-//        HttpRequest httpRequest = new HttpRequest(BuildConfig.HTTP_SERVER + ACTION_USER_LOGIN, HttpRequest.Method.POST, true);
-//        httpRequest.addParams(PARAM_LOGINNAME, loginName);
-//        httpRequest.addParams(PARAM_PASSWORD, password);
-//        httpRequest.addParams(PARAM_DEVICE_ID, deviceId);
-//        httpRequest.addParams(PARAM_CLIENT_ID, clientId == null ? "" : clientId);
-//
-//        FormBody formBody = new FormBody.Builder()
-//                .add(PARAM_LOGINNAME, loginName)
-//                .add(PARAM_PASSWORD, password)
-//                .add(PARAM_DEVICE_ID, deviceId)
-//                .add(PARAM_WX_UNIONID, deviceId)
-//                .add(PARAM_CLIENT_ID, clientId == null ? "" : clientId)
-//                .build();
-//        httpRequest.setFormBody(formBody);
-//
-//        HttpUtils.getInstance().execute(httpRequest, new HttpResponse() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//            }
-//
-//            @Override
-//            public void onResponse(String result) {
-//                UserModel userModel = JSON.parseObject(result, UserModel.class);
-//                if (!ValidateUtil.hasError(userModel)) {
-//                    LogUtils.e("userservice", "login suc save user to local");
-//                    UserService.getInstance().setIsLogin(true, userModel);
-//                    SharePrefUtil.saveObj(MyApplication.getInstance(), SharePrefKey.PREFERENCES_USER_MODEL, userModel);
-//                }
-//                CommonService.getInstance().home();
-//                CommonService.getInstance().getMessage();
-//                EventBus.getDefault().post(new UserEvent.UserLoginEvent(userModel));
-//            }
-//        });
-//    }
+    public Observable<UserModel> login(String loginName, String password, String deviceId, String clientId) {
+        ApiRequest httpRequest = new ApiRequest(BuildConfig.HTTP_SERVER + ACTION_USER_LOGIN, ApiRequest.Method.POST, true);
+        httpRequest.addParams(PARAM_LOGINNAME, loginName);
+        httpRequest.addParams(PARAM_PASSWORD, password);
+        httpRequest.addParams(PARAM_DEVICE_ID, deviceId);
+        httpRequest.addParams(PARAM_CLIENT_ID, clientId == null ? "" : clientId);
+        return RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).login());
+
+    }
 //
 //
 //    /**

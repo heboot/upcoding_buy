@@ -14,12 +14,15 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@android:color/holo_purple</item>
+        <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:windowBackground">?android:attr/colorBackground</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@color/cardview_shadow_end_color</item>
+        <item name="android:statusBarColor">#000000</item>
     </style>
 
+    <style name="LoginTheme" parent="AppTheme.NoActionBarT">
+        <item name="colorAccent">@color/white</item>
+    </style>
 
 </resources>
