@@ -20,6 +20,7 @@ import org.stringtemplate.v4.misc.Misc;
 
 import okhttp3.FormBody;
 import rx.Observable;
+import rx.Observer;
 
 /**
  * Created by Heboot on 16/6/24.
@@ -73,6 +74,7 @@ public class UserService extends HttpService {
             LogUtils.e("===========", "===========autoLogin2");
             login(sharePreUserModel.getNickName(), EncryptUtils.md5(sharePreUserModel.getNickName() + MiscUtils.getIMEI(context)), MiscUtils.getIMEI(context), "22233");
         } else {
+            LogUtils.e("===========", "===========autoLogin3");
             String loginName = getLoginName();
             register(loginName, EncryptUtils.md5(loginName + MiscUtils.getIMEI(context)), MiscUtils.getIMEI(context), "22233");
         }
@@ -93,24 +95,55 @@ public class UserService extends HttpService {
     }
 
 
-    public Observable<UserModel> register(String loginName, String password, String deviceId, String clientId) {
+    public void register(String loginName, String password, String deviceId, String clientId) {
         ApiRequest httpRequest = new ApiRequest(BuildConfig.HTTP_SERVER + ACTION_USER_REGISTER, ApiRequest.Method.POST, true);
         httpRequest.addParams(PARAM_LOGINNAME, loginName);
         httpRequest.addParams(PARAM_PASSWORD, password);
         httpRequest.addParams(PARAM_DEVICE_ID, deviceId);
         httpRequest.addParams(PARAM_CLIENT_ID, clientId == null ? "" : clientId);
-        return RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).register());
+        RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).register()).subscribe(new Observer<UserModel>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                LogUtils.e("register orrer", "register error");
+            }
+
+            @Override
+            public void onNext(UserModel o) {
+                LogUtils.e("register onNext", "register onNext");
+            }
+        });
+        ;
     }
 
     //
 //
-    public Observable<UserModel> login(String loginName, String password, String deviceId, String clientId) {
+    public void login(String loginName, String password, String deviceId, String clientId) {
         ApiRequest httpRequest = new ApiRequest(BuildConfig.HTTP_SERVER + ACTION_USER_LOGIN, ApiRequest.Method.POST, true);
         httpRequest.addParams(PARAM_LOGINNAME, loginName);
         httpRequest.addParams(PARAM_PASSWORD, password);
         httpRequest.addParams(PARAM_DEVICE_ID, deviceId);
         httpRequest.addParams(PARAM_CLIENT_ID, clientId == null ? "" : clientId);
-        return RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).login());
+        RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).login()).subscribe(new Observer<UserModel>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                LogUtils.e("login orrer", "login error");
+            }
+
+            @Override
+            public void onNext(UserModel o) {
+                LogUtils.e("login onNext", "login onNext");
+            }
+        });
 
     }
 //
