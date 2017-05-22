@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import com.upcoding.buy.R;
+import com.upcoding.buy.service.UserService;
 import com.upcoding.buy.ui.info.InfoFragment;
 import com.upcoding.buy.ui.post.PostFragment;
 
@@ -69,6 +70,7 @@ public class MainActivity extends ToolbarActivity {
     }
 
     protected void initData() {
+        UserService.getInstance().autoLogin(this);
         buttons = new AppCompatImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
         currentSelectMenuId = ibMainRecommend.getId();
         ibMainRecommend.setSelected(true);
