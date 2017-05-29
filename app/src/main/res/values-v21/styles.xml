@@ -6,7 +6,7 @@
         <!--<item_home_info name="colorPrimaryDark">@color/colorPrimaryDark</item_home_info>-->
         <!--<item_home_info name="colorAccent">@android:color/holo_purple</item_home_info>-->
         <item name="android:windowBackground">?android:attr/colorBackground</item>
-        <!--<item name="android:statusBarColor">#000000</item>-->
+        <!--<item name="android:statusBarColor">@color/colorPrimary</item>-->
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
@@ -18,7 +18,8 @@
         <item name="android:windowBackground">?android:attr/colorBackground</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">#000000</item>
+        <!--<item name="android:statusBarColor">#000000</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="LoginTheme" parent="AppTheme.NoActionBarT">

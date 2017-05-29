@@ -25,7 +25,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.upcoding.buy.ui.MainActivity"
-            android:theme="@style/AppTheme.NoActionBarT">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
