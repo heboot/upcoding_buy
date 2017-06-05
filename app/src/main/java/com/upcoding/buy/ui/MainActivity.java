@@ -70,7 +70,7 @@ public class MainActivity extends ToolbarActivity {
     }
 
     protected void initData() {
-        UserService.getInstance().autoLogin(this);
+//        UserService.getInstance().autoLogin(this);
         buttons = new AppCompatImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
         currentSelectMenuId = ibMainRecommend.getId();
         ibMainRecommend.setSelected(true);

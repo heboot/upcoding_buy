@@ -4,10 +4,9 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="?attr/actionBarSize"
-    app:layout_collapseMode="pin"
     android:background="@color/colorPrimary"
     android:paddingTop="@dimen/toolbar_padding_top"
+    app:layout_collapseMode="pin"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -15,24 +14,23 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="10dp">
+        android:gravity="center_vertical">
 
         <ImageButton
             android:id="@+id/ib_toolbar_back"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:background="?android:selectableItemBackground"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back_black_24dp"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_toolbar_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center|left"
-            android:layout_marginTop="21dp"
+
             android:gravity="center"
             android:maxEms="10"
             android:maxLines="1"
