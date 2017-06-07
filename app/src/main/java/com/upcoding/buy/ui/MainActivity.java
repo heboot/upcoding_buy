@@ -49,7 +49,7 @@ public class MainActivity extends ToolbarActivity {
     private static final int REQUEST_CODE = 0; // 请求码
 
     // 所需的全部权限
-    //test commit2
+    //test commit3
     static final String[] PERMISSIONS = new String[]{
             Manifest.permission.READ_PHONE_STATE,
 
