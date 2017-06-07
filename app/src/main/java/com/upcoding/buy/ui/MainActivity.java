@@ -1,5 +1,7 @@
 package com.upcoding.buy.ui;
 
+import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +17,7 @@ import com.upcoding.buy.R;
 import com.upcoding.buy.service.UserService;
 import com.upcoding.buy.ui.info.InfoFragment;
 import com.upcoding.buy.ui.post.PostFragment;
+import com.upcoding.buy.utils.PermissionsChecker;
 
 public class MainActivity extends ToolbarActivity {
 
@@ -41,6 +44,18 @@ public class MainActivity extends ToolbarActivity {
     private FragmentTransaction fragmentTransaction;
 
     private int currentSelectMenuId = -1;
+
+
+    private static final int REQUEST_CODE = 0; // 请求码
+
+    // 所需的全部权限
+    static final String[] PERMISSIONS = new String[]{
+            Manifest.permission.READ_PHONE_STATE,
+
+    };
+
+    private PermissionsChecker mPermissionsChecker; // 权限检测器
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +89,29 @@ public class MainActivity extends ToolbarActivity {
         buttons = new AppCompatImageButton[]{ibMainRecommend, ibMainPost, ibMainMsg, ibMainMy};
         currentSelectMenuId = ibMainRecommend.getId();
         ibMainRecommend.setSelected(true);
+        mPermissionsChecker = new PermissionsChecker(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 缺少权限时, 进入权限配置页面
+        if (mPermissionsChecker.lacksPermissions(PERMISSIONS)) {
+            startPermissionsActivity();
+        }
+    }
+
+    private void startPermissionsActivity() {
+        PermissionsActivity.startActivityForResult(this, REQUEST_CODE, PERMISSIONS);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 拒绝时, 关闭页面, 缺少主要权限, 无法运行
+        if (requestCode == REQUEST_CODE && resultCode == PermissionsActivity.PERMISSIONS_DENIED) {
+            finish();
+        }
+    }
 
     private void checkMenu(int id) {
         if (id == currentSelectMenuId) {

@@ -72,7 +72,7 @@ public class UserService extends HttpService {
         LogUtils.e("===========", "===========autoLogin");
         if (sharePreUserModel != null) {
             LogUtils.e("===========", "===========autoLogin2");
-            login(sharePreUserModel.getNickName(), EncryptUtils.md5(sharePreUserModel.getNickName() + MiscUtils.getIMEI(context)), MiscUtils.getIMEI(context), "22233");
+            login(sharePreUserModel.getNickName(), EncryptUtils.md5(sharePreUserModel.getNickName() + MiscUtils.getIMEI(context)));
         } else {
             LogUtils.e("===========", "===========autoLogin3");
             String loginName = getLoginName();
@@ -122,28 +122,13 @@ public class UserService extends HttpService {
 
     //
 //
-    public void login(String loginName, String password, String deviceId, String clientId) {
+    public Observable<UserModel> login(String loginName, String password) {
         ApiRequest httpRequest = new ApiRequest(BuildConfig.HTTP_SERVER + ACTION_USER_LOGIN, ApiRequest.Method.POST, true);
         httpRequest.addParams(PARAM_LOGINNAME, loginName);
         httpRequest.addParams(PARAM_PASSWORD, password);
-        httpRequest.addParams(PARAM_DEVICE_ID, deviceId);
-        httpRequest.addParams(PARAM_CLIENT_ID, clientId == null ? "" : clientId);
-        RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).login()).subscribe(new Observer<UserModel>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                LogUtils.e("login orrer", "login error");
-            }
-
-            @Override
-            public void onNext(UserModel o) {
-                LogUtils.e("login onNext", "login onNext");
-            }
-        });
+        httpRequest.addParams(PARAM_DEVICE_ID, MiscUtils.getIMEI(MyApplication.getInstance().getApplicationContext()));
+        httpRequest.addParams(PARAM_CLIENT_ID, "22233");
+       return RxHelper.handleResult2(ApiClient.getServiceApi(httpRequest).login());
 
     }
 //

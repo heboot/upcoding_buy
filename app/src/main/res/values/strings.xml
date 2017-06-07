@@ -9,4 +9,8 @@
     <string name="tag_main_bottom_menu_msg">ib_main_msg</string>
     <string name="tag_main_bottom_menu_my">ib_main_my</string>
 
+    <string name="help">帮助</string>
+    <string name="string_help_text">需要权限</string>
+    <string name="quit">走你</string>
+    <string name="settings">设置</string>
 </resources>

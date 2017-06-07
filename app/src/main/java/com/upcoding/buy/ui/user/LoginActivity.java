@@ -3,10 +3,17 @@ package com.upcoding.buy.ui.user;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.upcoding.buy.R;
 import com.upcoding.buy.databinding.ActivityLoginBinding;
+import com.upcoding.buy.model.UserModel;
+import com.upcoding.buy.service.UserService;
 import com.upcoding.buy.ui.ToolbarActivity;
+
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Heboot on 2017/5/22.
@@ -26,10 +33,30 @@ public class LoginActivity extends ToolbarActivity {
         if (!validate()) {
             onLoginFailed();
         }
+        UserService.getInstance()
+                .login(loginBinding.inputEmail.getText().toString(),loginBinding.inputPassword.getText().toString())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<UserModel>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(UserModel userModel) {
+                        finish();
+                    }
+                });
     }
 
     public void onLoginFailed() {
-//        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 //        _loginButton.setEnabled(true);
     }
 
